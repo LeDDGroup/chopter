@@ -4,6 +4,7 @@ Game::Game() {
   steps = 0;
   verticalChopterSteps = 1;
   horizontalChopterSteps = 20;
+  blockWidth = 32;
 }
 
 void Game::increaseStep() {
@@ -14,24 +15,19 @@ void Game::moveChopter(bool fuel) {
   if (steps % verticalChopterSteps == 0) {
     chopter.move(fuel);
   }
-  if (steps % horizontalChopterSteps == 0) {
-    map.move();
-  }
 }
 
 void Game::checkColition() {
 }
 
-void Game::removeBlocks() {
+void Game::updateBlocks() {
+  int position = map.pxToBlock(chopter.getX(), blockWidth);
+  map.onStep(position);
 }
 
 void Game::onStep(bool fuel) {
   moveChopter(fuel);
   checkColition();
-  removeBlocks();
+  updateBlocks();
   increaseStep();
-}
-
-const Chopter & Game::getChopter() const {
-  return chopter;
 }
