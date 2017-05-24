@@ -1,25 +1,16 @@
 #include <SDL2/SDL_events.h>
 #include "core/Game.hpp"
+#include "Event.hpp"
 
 extern Game game;
 
-bool waitForStepTime();
-bool checkForButtonDown();
 void draw();
 
-SDL_Event event;
-
 void loop() {
-  while(waitForStepTime()) {
-    const bool action = checkForButtonDown();
+  Event event;
+  while(event.waitForStepTime()) {
+    const bool action = event.checkForButtonDown();
     game.onStep(action);
     draw();
   }
-}
-
-bool waitForStepTime() {
-  return false;
-}
-bool checkForButtonDown() {
-  return false;
 }

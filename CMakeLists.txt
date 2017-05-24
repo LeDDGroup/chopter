@@ -5,6 +5,7 @@ add_executable(hello
   src/main.cpp
   src/loop.cpp
   src/draw.cpp
+  src/Event.cpp
   src/core/Game.cpp
   )
 target_link_libraries(hello SDL2)
