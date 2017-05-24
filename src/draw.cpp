@@ -1,6 +1,8 @@
 #include <SDL2/SDL_video.h>
 #include <SDL2/SDL_surface.h>
 #include "core/Game.hpp"
+#include "core/Chopter.hpp"
+#include "core/Map.hpp"
 
 #define C_BLACK 0x00000000
 #define C_WHITE 0xFFFFFFFF
@@ -10,6 +12,8 @@
 
 #define C_SCREEN C_BLACK
 #define C_PLAYER C_BLUE
+#define C_CEIL C_RED
+#define C_FLOOR C_GREEN
 
 extern SDL_Window * window;
 extern SDL_Surface * screenSurface;
@@ -29,9 +33,33 @@ void drawChopter(const Chopter & chopter) {
   SDL_FillRect(screenSurface, &rect, C_PLAYER);
 }
 
+void drawMap(const Map & map) {
+  const int size = 32;
+  rect.w = size; rect.h = size;
+  const int base = 480;
+  const int length = map.getLength();
+  const int * floor = map.getFloor();
+  const int * ceil = map.getCeil();
+  for (int i = 0; i < length; i++) {
+    rect.x = i * size;
+    const int floorHeight = floor[i];
+    for (int j = 0; j <= floorHeight; j++) {
+      rect.y = base - (j+1)*size;
+      SDL_FillRect(screenSurface, &rect, C_FLOOR);
+    }
+    const int ceilHeight = ceil[i];
+    for (int j = 0; j <= ceilHeight; j++) {
+      rect.y = j*size;
+      SDL_FillRect(screenSurface, &rect, C_CEIL);
+    }
+  }
+}
+
 void draw() {
   const Chopter &chopter = game.getChopter();
+  const Map &map = game.getMap();
   clearScreen();
+  drawMap(map);
   drawChopter(chopter);
   SDL_UpdateWindowSurface(window);
 }
