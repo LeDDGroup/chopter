@@ -19,7 +19,7 @@ void clearScreen() {
 
 void drawChopter(const Chopter & chopter) {
   rect.x = chopter.getX(); rect.y = chopter.getY();
-  rect.w = 32; rect.h = 32;
+  rect.w = chopter.getWidth(); rect.h = chopter.getHeight();
   SDL_FillRect(screenSurface, &rect, C_WHITE);
 }
 
