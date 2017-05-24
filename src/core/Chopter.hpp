@@ -7,6 +7,7 @@ class Chopter {
   float x, y;
   int width, height;
   float vspeed, hspeed;
+  float mxVspeed, mnVspeed;
   Status status;
   void setStatus(Status status);
   void updateSpeed();

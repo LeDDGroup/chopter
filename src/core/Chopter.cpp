@@ -6,7 +6,9 @@ Chopter::Chopter(int x, int y, int width, int height) {
   this->width = width;
   this->height = height;
   this->vspeed = 0;
-  this->hspeed = 4;
+  this->hspeed = 5;
+  this->mxVspeed = 7;
+  this->mnVspeed = -12;
 }
 
 void Chopter::updateSpeed() {
@@ -14,6 +16,12 @@ void Chopter::updateSpeed() {
     vspeed -= accel;
   } else {
     vspeed += gravity;
+  }
+  if(vspeed > mxVspeed) {
+    vspeed = mxVspeed;
+  }
+  if(vspeed < mnVspeed) {
+    vspeed = mnVspeed;
   }
 }
 
