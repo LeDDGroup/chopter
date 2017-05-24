@@ -2,25 +2,28 @@
 
 Game::Game() {
   steps = 0;
-  chopterStep = 15;
-  mapStep = 20;
-}
-void Game::increaseStep() {
-  this->steps++;
-}
-bool Game::canChopterMove() const {
-  return true;
-}
-bool Game::canMapMove() const {
-  return true;
+  verticalChopterSteps = 15;
+  horizontalChopterSteps = 20;
 }
 
-void Game::onStep(bool moveChopter) {
-  if (this->canChopterMove()) {
-    this->chopter.move(moveChopter);
+void Game::increaseStep() {
+  steps++;
+}
+
+void Game::moveChopter(bool fuel) {
+  if (steps % verticalChopterSteps == 0) {
+    chopter.move(fuel);
   }
-  if (this->canMapMove()) {
-    this->map.move();
+  if (steps % horizontalChopterSteps == 0) {
+    map.move();
   }
-  this->increaseStep();
+}
+
+void Game::checkColition() {
+}
+
+void Game::onStep(bool fuel) {
+  moveChopter(fuel);
+  checkColition();
+  increaseStep();
 }

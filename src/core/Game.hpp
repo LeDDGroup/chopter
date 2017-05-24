@@ -5,11 +5,11 @@
 
 class Game {
   unsigned long long int steps;
-  int chopterStep;
-  int mapStep;
+  int verticalChopterSteps;
+  int horizontalChopterSteps;
   void increaseStep ();
-  bool canChopterMove () const;
-  bool canMapMove () const;
+  void moveChopter (bool fuel);
+  void checkColition ();
   Chopter chopter;
   Map map;
 public:
