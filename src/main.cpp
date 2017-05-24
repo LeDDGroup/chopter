@@ -2,12 +2,10 @@
 #include <SDL2/SDL.h>
 #include "core/Game.hpp"
 
-SDL_Window *window;
-SDL_Event event;
-Game game;
+void loop();
 
-bool waitForStepTime();
-bool checkForButtonDown();
+SDL_Window *window;
+Game game;
 
 int main() {
   SDL_Init(SDL_INIT_VIDEO);
@@ -15,21 +13,7 @@ int main() {
                             SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
                             640, 480,
                             SDL_WINDOW_SHOWN);
-  SDL_Delay(1000);
+  loop();
   SDL_Quit();
   return 0;
-}
-
-void loop() {
-  while(waitForStepTime()) {
-    const bool action = checkForButtonDown();
-    game.onStep(action);
-  }
-}
-
-bool waitForStepTime() {
-  return false;
-}
-bool checkForButtonDown() {
-  return false;
 }
