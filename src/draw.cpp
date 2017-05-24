@@ -20,6 +20,7 @@ extern SDL_Surface * screenSurface;
 extern Game game;
 
 static SDL_Rect rect;
+static int xoffset;
 
 void clearScreen() {
   rect.x = 0; rect.y = 0;
@@ -28,7 +29,7 @@ void clearScreen() {
 }
 
 void drawChopter(const Chopter & chopter) {
-  rect.x = chopter.getX(); rect.y = chopter.getY();
+  rect.x = chopter.getX() - xoffset; rect.y = chopter.getY();
   rect.w = chopter.getWidth(); rect.h = chopter.getHeight();
   SDL_FillRect(screenSurface, &rect, C_PLAYER);
 }
@@ -41,7 +42,7 @@ void drawMap(const Map & map) {
   const int length = map.getLength();
   const Hole * field = map.getField();
   for (int i = 0; i < length; i++) {
-    rect.x = i * size;
+    rect.x = i * size - xoffset;
     const int y1 = field[i].height;
     const int y2 = y1 + field[i].size;
     for (int j = 0; j <= y1; j++) {
@@ -58,6 +59,7 @@ void drawMap(const Map & map) {
 void draw() {
   const Chopter &chopter = game.getChopter();
   const Map &map = game.getMap();
+  xoffset = chopter.getX();
   clearScreen();
   drawMap(map);
   drawChopter(chopter);
