@@ -1,6 +1,6 @@
 #include "Chopter.hpp"
 
-Chopter::Chopter(int x, int y, int height, int widht) {
+Chopter::Chopter(int x, int y, int width, int height) {
   this->x = x;
   this->y = y;
   this->width = width;
