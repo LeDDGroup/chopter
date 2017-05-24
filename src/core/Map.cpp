@@ -6,6 +6,7 @@ Map::Map(int height, int length, int updateDistance) {
   this->updateDistance = updateDistance;
   this->length = length;
   generateMap();
+  prev = 0;
 }
 
 void Map::generateMap() {
@@ -23,10 +24,13 @@ int Map::randomValue(int value) {
 }
 
 void Map::updateBlocks(int position) {
-  int updatePosition = (position + updateDistance) % length;
-  int previousToUpdate = (position + updateDistance - 1) % length;
-  field[updatePosition].size = randomValue(field[previousToUpdate].size);
-  field[updatePosition].height = randomValue(field[previousToUpdate].height);
+  if (position != prev) {
+    int updatePosition = (position + updateDistance) % length;
+    int previousToUpdate = (position + updateDistance - 1) % length;
+    field[updatePosition].size = randomValue(field[previousToUpdate].size);
+    field[updatePosition].height = randomValue(field[previousToUpdate].height);
+    prev = position;
+  }
 }
 
 int Map::pxToBlock(int x, int blockWidth) {

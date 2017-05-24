@@ -11,6 +11,7 @@ class Map {
   int updateDistance;
   int length;
   int height;
+  int prev;
   Hole field[maxWidth];
   int randomValue(int value);
   void generateMap();
