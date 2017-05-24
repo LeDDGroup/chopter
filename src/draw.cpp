@@ -57,6 +57,7 @@ void drawMap(const Map & map) {
   const Hole * field = map.getField();
   for (int i = 0; i < length; i++) {
     drawColumn(i * size - xoffset, field[i]);
+    drawColumn((i+length) * size - xoffset, field[i]);
   }
 }
 
