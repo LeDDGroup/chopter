@@ -7,6 +7,7 @@ class Game {
   unsigned long long int steps;
   int chopterStep;
   int mapStep;
+  void increaseStep ();
   bool canChopterMove () const;
   bool canMapMove () const;
   Chopter chopter;

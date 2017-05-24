@@ -5,22 +5,22 @@ Game::Game() {
   chopterStep = 15;
   mapStep = 20;
 }
-Game::increaseStep() {
-  this->step++;
+void Game::increaseStep() {
+  this->steps++;
 }
-Game::canChopterMove() {
-}
+bool Game::canChopterMove() const {
   return true;
-Game::canMapMove() {
+}
+bool Game::canMapMove() const {
   return true;
 }
 
 void Game::onStep(bool moveChopter) {
-  if (canChopterMove()) {
+  if (this->canChopterMove()) {
     this->chopter.move(moveChopter);
   }
-  if (canMapMove()) {
+  if (this->canMapMove()) {
     this->map.move();
   }
-  increaseStep();
+  this->increaseStep();
 }
