@@ -2,13 +2,17 @@
 
 #define maxWidth 10000
 
+struct Hole {
+  int height;
+  int size;
+};
+
 class Map {
   int updateDistance;
   int minDistance;
   int length;
   int height;
-  int topHeight[maxWidth];
-  int bottomHeight[maxWidth];
+  Hole field[maxWidth];
   int randomHeight(int  height );
   void generateMap();
   void updateBlocks(int x);
@@ -17,6 +21,5 @@ public:
   void onStep(int position);
   int pxToBlock(int x, int blockWidth);
   int getLength() const { return this->length; }
-  const int * getCeil() const { return this->topHeight; }
-  const int * getFloor() const { return this->bottomHeight; }
+  const Hole * getField() const { return this->field; }
 };
