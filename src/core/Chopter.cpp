@@ -9,10 +9,6 @@ Chopter::Chopter(int x, int y, int width, int height) {
   this->hspeed = 4;
 }
 
-void Chopter::resetPosition() {
-  x = 0;
-}
-
 void Chopter::updateSpeed() {
   if (status == fly) {
     vspeed -= accel;
