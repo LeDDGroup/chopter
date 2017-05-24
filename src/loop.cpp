@@ -5,6 +5,7 @@ extern Game game;
 
 bool waitForStepTime();
 bool checkForButtonDown();
+void draw();
 
 SDL_Event event;
 
@@ -12,6 +13,7 @@ void loop() {
   while(waitForStepTime()) {
     const bool action = checkForButtonDown();
     game.onStep(action);
+    draw();
   }
 }
 
