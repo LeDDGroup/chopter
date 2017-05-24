@@ -6,7 +6,7 @@ Chopter::Chopter(int x, int y, int width, int height) {
   this->width = width;
   this->height = height;
   this->vspeed = 0;
-  this->hspeed = 1;
+  this->hspeed = 4;
 }
 
 void Chopter::resetPosition() {
