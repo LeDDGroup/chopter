@@ -2,6 +2,7 @@
 
 class Event {
   bool quit;
+  bool hasPressedKey;
   Uint32 prevTime;
   Uint32 timeout;
   bool checkEvents();
