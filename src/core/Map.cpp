@@ -1,6 +1,7 @@
 #include "Map.hpp"
 
 Map::Map(int height, int length, int updateDistance) {
+  this->height = height;
   this->updateDistance = updateDistance;
   this->length = length;
   generateMap();
