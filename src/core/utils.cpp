@@ -8,8 +8,10 @@ bool collission(const Rect &a, const Rect &b) {
   return collission(a1.x, a2.x, b1.x, b2.x) && collission(a1.y, a2.y, b1.y, b2.y);
 }
 
-bool collission(const int x1, const int x2, const int y1, const int y2) {
-  // TODO implement
+bool collission(const int x1, const int x2, const int x3, const int x4) {
+  if (x1 <= x4 && x2 >= x3) {
+    return true;
+  }
   return false;
 }
 
