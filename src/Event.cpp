@@ -11,7 +11,8 @@ bool Event::waitForStepTime() {
 }
 
 bool Event::checkForButtonDown() const {
-  return false;
+  const Uint8* currentKeyStates = SDL_GetKeyboardState(NULL);
+  return currentKeyStates[SDL_SCANCODE_UP];
 }
 
 bool Event::checkEvents() {
