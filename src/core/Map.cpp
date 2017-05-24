@@ -1,3 +1,4 @@
+#include <cstdlib>
 #include "Map.hpp"
 
 Map::Map(int height, int length, int updateDistance) {
@@ -17,7 +18,8 @@ void Map::generateMap() {
 }
 
 int Map::randomValue(int value) {
-  return value;
+  int r = (random() % 3) - 1;
+  return value + r;
 }
 
 void Map::updateBlocks(int position) {
