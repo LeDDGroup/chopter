@@ -4,7 +4,7 @@
 
 Event::Event() {
   quit = false;
-  timeout = 1000/60;
+  timeout = 1000/30;
   resetTime();
 }
 
