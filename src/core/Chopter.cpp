@@ -15,9 +15,9 @@ void Chopter::resetPosition() {
 
 void Chopter::updateSpeed() {
   if (status == fly) {
-    vspeed -= 1;
+    vspeed -= accel;
   } else {
-    vspeed += 2;
+    vspeed += gravity;
   }
 }
 
