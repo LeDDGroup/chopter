@@ -16,4 +16,5 @@ class Game {
 public:
   Game();
   void onStep(bool buttonStatus);
+  const Chopter & getChopter() const;
 };
