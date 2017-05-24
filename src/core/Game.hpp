@@ -7,10 +7,11 @@ class Game {
   unsigned long long int steps;
   int verticalChopterSteps;
   int horizontalChopterSteps;
+  int blockWidth;
   void increaseStep ();
   void moveChopter (bool fuel);
   void checkColition ();
-  void removeBlocks ();
+  void updateBlocks ();
   Chopter chopter;
   Map map;
 public:
