@@ -1,8 +1,11 @@
 #include <SDL2/SDL_events.h>
+#include <SDL2/SDL_timer.h>
 #include "Event.hpp"
 
 Event::Event() {
   quit = false;
+  timeout = 1000/30;
+  resetTime();
 }
 
 bool Event::waitForStepTime() {
@@ -24,5 +27,17 @@ bool Event::checkEvents() {
       break;
     }
   }
+  if (isTime()) {
+    resetTime();
+    return false;
+  }
   return !quit;
+}
+
+bool Event::isTime() {
+  return prevTime + timeout <= SDL_GetTicks();
+}
+
+void Event::resetTime() {
+  prevTime = SDL_GetTicks();
 }
