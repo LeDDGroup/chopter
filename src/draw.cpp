@@ -21,6 +21,8 @@ extern Game game;
 
 static SDL_Rect rect;
 static int xoffset;
+const int size = 32;
+const int height = 15;
 
 void clearScreen() {
   rect.x = 0; rect.y = 0;
@@ -34,25 +36,27 @@ void drawChopter(const Chopter & chopter) {
   SDL_FillRect(screenSurface, &rect, C_PLAYER);
 }
 
+void drawColumn(int x, const Hole &hole) {
+  rect.x = x;
+  const int y1 = hole.height;
+  const int y2 = y1 + hole.size;
+  for (int j = 0; j <= y1; j++) {
+    rect.y = j*size;
+    SDL_FillRect(screenSurface, &rect, C_CEIL);
+  }
+  for (int j = y2+1; j < height; j++) {
+    rect.y = j*size;
+    SDL_FillRect(screenSurface, &rect, C_FLOOR);
+  }
+}
+
 void drawMap(const Map & map) {
-  const int size = 32;
   rect.w = size; rect.h = size;
   const int base = 480;
-  const int height = 15;
   const int length = map.getLength();
   const Hole * field = map.getField();
   for (int i = 0; i < length; i++) {
-    rect.x = i * size - xoffset;
-    const int y1 = field[i].height;
-    const int y2 = y1 + field[i].size;
-    for (int j = 0; j <= y1; j++) {
-      rect.y = j*size;
-      SDL_FillRect(screenSurface, &rect, C_CEIL);
-    }
-    for (int j = y2+1; j < height; j++) {
-      rect.y = j*size;
-      SDL_FillRect(screenSurface, &rect, C_FLOOR);
-    }
+    drawColumn(i * size - xoffset, field[i]);
   }
 }
 
