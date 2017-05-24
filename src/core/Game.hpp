@@ -8,10 +8,10 @@ class Game {
   int verticalChopterSteps;
   int horizontalChopterSteps;
   int blockWidth;
-  void increaseStep ();
-  void moveChopter (bool fuel);
-  void checkColition ();
-  void updateBlocks ();
+  void increaseStep();
+  void moveChopter(bool fuel);
+  void checkColition();
+  void updateBlocks();
   Chopter chopter;
   Map map;
 public:
