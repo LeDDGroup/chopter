@@ -37,20 +37,20 @@ void drawMap(const Map & map) {
   const int size = 32;
   rect.w = size; rect.h = size;
   const int base = 480;
+  const int height = 15;
   const int length = map.getLength();
-  const int * floor = map.getFloor();
-  const int * ceil = map.getCeil();
+  const Hole * field = map.getField();
   for (int i = 0; i < length; i++) {
     rect.x = i * size;
-    const int floorHeight = floor[i];
-    for (int j = 0; j <= floorHeight; j++) {
-      rect.y = base - (j+1)*size;
-      SDL_FillRect(screenSurface, &rect, C_FLOOR);
-    }
-    const int ceilHeight = ceil[i];
-    for (int j = 0; j <= ceilHeight; j++) {
+    const int y1 = field[i].height;
+    const int y2 = y1 + field[i].size;
+    for (int j = 0; j <= y1; j++) {
       rect.y = j*size;
       SDL_FillRect(screenSurface, &rect, C_CEIL);
+    }
+    for (int j = y2+1; j < height; j++) {
+      rect.y = j*size;
+      SDL_FillRect(screenSurface, &rect, C_FLOOR);
     }
   }
 }
