@@ -1,30 +1,32 @@
+#include <cstdlib>
 #include "Map.hpp"
 
-Map::Map(int height, int length, int updateDistance, int minDistance) {
+Map::Map(int height, int length, int updateDistance) {
+  this->height = height;
   this->updateDistance = updateDistance;
   this->length = length;
-  this->minDistance = minDistance;
   generateMap();
 }
 
 void Map::generateMap() {
-  topHeight[0] = height;
-  bottomHeight[0] = 0;
+  field[0].size = 6;
+  field[0].height = height/2;
   for(int i = 1; i < length; i++) {
-    topHeight[i] = randomHeight(topHeight[i-1]);
-    bottomHeight[i] = randomHeight(bottomHeight[i-1]);
+    field[i].size = randomValue(field[i-1].size);
+    field[i].height = randomValue(field[i-1].height);
   }
 }
 
-int Map::randomHeight(int height) {
-  return height;
+int Map::randomValue(int value) {
+  int r = (random() % 3) - 1;
+  return value + r;
 }
 
 void Map::updateBlocks(int position) {
   int updatePosition = (position + updateDistance) % length;
   int previousToUpdate = (position + updateDistance - 1) % length;
-  topHeight[updatePosition] = randomHeight(topHeight[previousToUpdate]);
-  bottomHeight[updatePosition] = randomHeight(bottomHeight[previousToUpdate]);
+  field[updatePosition].size = randomValue(field[previousToUpdate].size);
+  field[updatePosition].height = randomValue(field[previousToUpdate].height);
 }
 
 int Map::pxToBlock(int x, int blockWidth) {
