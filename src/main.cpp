@@ -5,6 +5,7 @@
 void loop();
 
 SDL_Window * window;
+SDL_Surface * screenSurface;
 Game game;
 
 void init() {
@@ -13,6 +14,7 @@ void init() {
                             SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
                             640, 480,
                             SDL_WINDOW_SHOWN);
+  screenSurface = SDL_GetWindowSurface(window);
 }
 void quit() {
   SDL_Quit();
