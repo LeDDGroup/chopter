@@ -34,5 +34,4 @@ void Chopter::move (bool fuel) {
   else {
     fall ();
   }
-  resetPosition ();
 };
