@@ -25,8 +25,8 @@ int Map::randomValue(int value) {
 
 void Map::updateBlocks(int position) {
   if (position != prev) {
-    int updatePosition = (position + updateDistance) % length;
-    int previousToUpdate = (position + updateDistance - 1) % length;
+    int updatePosition = (position + updateDistance + length) % length;
+    int previousToUpdate = (updatePosition - 1 + length) % length;
     field[updatePosition].size = randomValue(field[previousToUpdate].size);
     field[updatePosition].height = randomValue(field[previousToUpdate].height);
     prev = position;
