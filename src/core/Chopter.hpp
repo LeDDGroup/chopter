@@ -10,8 +10,8 @@ class Chopter {
 public:
   Chopter (int x = 0, int y = 0, int width = 32, int height = 32);
   void move (bool fuel);
-  int getX ();
-  int getY ();
-  int getWidth ();
-  int getHeight ();
+  int getX () const { return x; }
+  int getY () const { return y; }
+  int getWidth () const { return width; }
+  int getHeight () const { return height; }
 };
