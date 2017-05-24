@@ -2,7 +2,8 @@
 
 class Chopter {
   int x, y, width, height;
-  int horizontalSpeed, verticalSpeed, fallSpeed;
+  int vspeed;
+  int hspeed;
   void setPosition (int x, int y);
   void fly ();
   void fall ();

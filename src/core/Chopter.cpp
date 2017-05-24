@@ -5,9 +5,8 @@ Chopter::Chopter(int x, int y, int width, int height) {
   this->y = y;
   this->width = width;
   this->height = height;
-  horizontalSpeed = 1;
-  verticalSpeed = 8;
-  fallSpeed = 4;
+  this->vspeed = 0;
+  this->hspeed = 1;
 }
 
 void Chopter::setPosition (int x, int y) {
@@ -16,11 +15,13 @@ void Chopter::setPosition (int x, int y) {
 }
 
 void Chopter::fly () {
-  setPosition (x + horizontalSpeed, y - verticalSpeed);
+  vspeed -= 1;
+  setPosition (x + hspeed, y + vspeed);
 }
 
 void Chopter::fall () {
-  setPosition (x + horizontalSpeed, y + fallSpeed);
+  vspeed += 2;
+  setPosition (x + hspeed, y + vspeed);
 }
 
 void Chopter::resetPosition () {
