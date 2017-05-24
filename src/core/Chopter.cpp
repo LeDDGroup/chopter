@@ -9,30 +9,30 @@ Chopter::Chopter(int x, int y, int width, int height) {
   this->hspeed = 1;
 }
 
-void Chopter::setPosition (int x, int y) {
+void Chopter::setPosition(int x, int y) {
   this->x = x;
   this->y = y;
 }
 
-void Chopter::fly () {
+void Chopter::fly() {
   vspeed -= 1;
-  setPosition (x + hspeed, y + vspeed);
+  setPosition(x + hspeed, y + vspeed);
 }
 
-void Chopter::fall () {
+void Chopter::fall() {
   vspeed += 2;
-  setPosition (x + hspeed, y + vspeed);
+  setPosition(x + hspeed, y + vspeed);
 }
 
-void Chopter::resetPosition () {
-  setPosition (0, y);
+void Chopter::resetPosition() {
+  setPosition(0, y);
 }
 
-void Chopter::move (bool fuel) {
+void Chopter::move(bool fuel) {
   if (fuel) {
-    fly ();
+    fly();
   }
   else {
-    fall ();
+    fall();
   }
 };
