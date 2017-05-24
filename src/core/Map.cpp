@@ -7,8 +7,8 @@ Map::Map(int height, int length, int updateDistance) {
   this->length = length;
   this->minSize = 4;
   this->maxSize = 9;
-  this->minHeight = 2;
-  this->maxHeight = height-2;
+  this->minHeight = 1;
+  this->maxHeight = height - maxSize - 1;
   generateMap();
   prev = 0;
 }
