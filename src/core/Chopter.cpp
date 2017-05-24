@@ -24,6 +24,8 @@ void Chopter::updateSpeed() {
 void Chopter::updatePosition() {
   x += hspeed;
   y += vspeed;
+
+  x = (int)x % 672;
 }
 
 void Chopter::setStatus(Status status) {
