@@ -2,7 +2,7 @@
 
 Game::Game() {
   steps = 0;
-  verticalChopterSteps = 15;
+  verticalChopterSteps = 1;
   horizontalChopterSteps = 20;
 }
 
