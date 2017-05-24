@@ -16,4 +16,6 @@ public:
   Map(int height = 15, int length = 40, int updateDistance = 5, int minDistance = 5);
   void onStep(int position);
   int pxToBlock(int x, int blockWidth);
+  const int * getCeil() const { return this->topHeight; }
+  const int * getFloor() const { return this->bottomHeight; }
 };
