@@ -16,7 +16,7 @@ void Map::generateMap() {
   }
 }
 
-int randomHeight(int height) {
+int Map::randomHeight(int height) {
   return height;
 }
 
