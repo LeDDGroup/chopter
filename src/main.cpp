@@ -1,7 +1,14 @@
 #include <cstdio>
 #include <SDL2/SDL.h>
+#include "core/Game.hpp"
 
-const SDL_Window * window;
+SDL_Window *window;
+SDL_Event event;
+Game game;
+
+bool waitForStepTime();
+bool checkForButtonDown();
+
 int main() {
   SDL_Init(SDL_INIT_VIDEO);
   window = SDL_CreateWindow("Hello World",
@@ -11,4 +18,18 @@ int main() {
   SDL_Delay(1000);
   SDL_Quit();
   return 0;
+}
+
+void loop() {
+  while(waitForStepTime()) {
+    const bool action = checkForButtonDown();
+    game.onStep(action);
+  }
+}
+
+bool waitForStepTime() {
+  return false;
+}
+bool checkForButtonDown() {
+  return false;
 }
