@@ -1,6 +1,8 @@
 #include <SDL2/SDL_video.h>
 #include <SDL2/SDL_surface.h>
 #include "core/Game.hpp"
+#include "core/Chopter.hpp"
+#include "core/Map.hpp"
 
 #define C_BLACK 0x00000000
 #define C_WHITE 0xFFFFFFFF
@@ -29,9 +31,14 @@ void drawChopter(const Chopter & chopter) {
   SDL_FillRect(screenSurface, &rect, C_PLAYER);
 }
 
+void drawMap(const Map & map) {
+}
+
 void draw() {
   const Chopter &chopter = game.getChopter();
+  const Map &map = game.getMap();
   clearScreen();
+  drawMap(map);
   drawChopter(chopter);
   SDL_UpdateWindowSurface(window);
 }
