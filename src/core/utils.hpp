@@ -10,4 +10,4 @@ struct Rect {
 
 bool collission(const Rect &a, const Rect &b);
 
-bool collission(const Point &a, const Point &b);
+bool collission(const int x1, const int x2, const int y1, const int y2);
