@@ -2,7 +2,7 @@
 
 struct Point {
   int x, y;
-}
+};
 
 struct Rect {
   Point position, size;
