@@ -16,7 +16,7 @@ class Map {
   void generateMap();
   void updateBlocks(int x);
 public:
-  Map(int height = 15, int length = 40, int updateDistance = 20);
+  Map(int height = 15, int length = 40, int updateDistance = 22);
   void onStep(int position);
   int pxToBlock(int x, int blockWidth);
   int getLength() const { return this->length; }
