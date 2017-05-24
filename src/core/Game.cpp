@@ -22,8 +22,12 @@ void Game::moveChopter(bool fuel) {
 void Game::checkColition() {
 }
 
+void Game::removeBlocks() {
+}
+
 void Game::onStep(bool fuel) {
   moveChopter(fuel);
   checkColition();
+  removeBlocks();
   increaseStep();
 }

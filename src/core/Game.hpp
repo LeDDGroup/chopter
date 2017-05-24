@@ -10,6 +10,7 @@ class Game {
   void increaseStep ();
   void moveChopter (bool fuel);
   void checkColition ();
+  void removeBlocks ();
   Chopter chopter;
   Map map;
 public:
