@@ -31,7 +31,3 @@ void Game::onStep(bool fuel) {
   updateBlocks();
   increaseStep();
 }
-
-const Chopter & Game::getChopter() const {
-  return chopter;
-}

@@ -17,5 +17,6 @@ class Game {
 public:
   Game();
   void onStep(bool buttonStatus);
-  const Chopter & getChopter() const;
+  const Chopter & getChopter() const { return this->chopter; }
+  const Map & getMap() const { return this->map; }
 };
