@@ -1,12 +1,13 @@
 #pragma once
 
 class Chopter {
-  static const float accel = 0.4;
-  static const float gravity = 0.4;
+  static const float accel = 0.8;
+  static const float gravity = 1.3;
   enum Status { fly, fall };
   float x, y;
   int width, height;
   float vspeed, hspeed;
+  float mxVspeed, mnVspeed;
   Status status;
   void setStatus(Status status);
   void updateSpeed();
