@@ -1,12 +1,14 @@
 #pragma once
 
 class Chopter {
+  enum Status { fly, fall };
   int x, y, width, height;
   int vspeed;
   int hspeed;
-  void setPosition(int x, int y);
-  void fly();
-  void fall();
+  Status status;
+  void setStatus(Status status);
+  void updateSpeed();
+  void updatePosition();
   void resetPosition();
 public:
   Chopter(int x = 0, int y = 0, int width = 32, int height = 32);
