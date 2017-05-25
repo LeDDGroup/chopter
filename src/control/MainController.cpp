@@ -33,6 +33,8 @@ bool MainController::processEvent(const SDL_Event & event) {
     return false;
   }
   if (event.type == SDL_MOUSEBUTTONDOWN) {
+    // TODO check for actual click on the button
+    // TODO send to next screen
     quit = true;
     return false;
   }
