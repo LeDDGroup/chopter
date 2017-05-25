@@ -1,5 +1,8 @@
 #include "Chopter.hpp"
 
+const float Chopter::accel = 0.8;
+const float Chopter::gravity = 1.3;
+
 Chopter::Chopter(int x, int y, int width, int height) {
   this->x = x;
   this->y = y;

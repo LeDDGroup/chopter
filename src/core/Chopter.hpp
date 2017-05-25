@@ -2,8 +2,8 @@
 #define CHOPTER_HPP
 
 class Chopter {
-  static const float accel = 0.8;
-  static const float gravity = 1.3;
+  static const float accel;
+  static const float gravity;
   enum Status { fly, fall };
   float x, y;
   int width, height;
