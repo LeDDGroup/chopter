@@ -1,12 +1,14 @@
 #ifndef CHOPTER_HPP
 #define CHOPTER_HPP
 
+#include "Point.hpp"
+
 class Chopter {
   static const float accel;
   static const float gravity;
   enum Status { fly, fall };
-  float x, y;
-  int width, height;
+  Point<float> position;
+  Point<int> size;
   float vspeed, hspeed;
   float mxVspeed, mnVspeed;
   Status status;
@@ -14,12 +16,12 @@ class Chopter {
   void updateSpeed();
   void updatePosition();
 public:
-  Chopter(int x = 0, int y = 0, int width = 32, int height = 32);
+  Chopter(const Point<float> &position = Point<float>(0, 0), const Point<int> &size = Point<int>(32, 32));
   void move(bool fuel);
-  int getX() const { return x; }
-  int getY() const { return y; }
-  int getWidth() const { return width; }
-  int getHeight() const { return height; }
+  int getX() const { return position.x; }
+  int getY() const { return position.y; }
+  int getWidth() const { return size.x; }
+  int getHeight() const { return size.y; }
 };
 
 #endif

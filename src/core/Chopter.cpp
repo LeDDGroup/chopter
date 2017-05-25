@@ -3,11 +3,8 @@
 const float Chopter::accel = 0.8;
 const float Chopter::gravity = 1.3;
 
-Chopter::Chopter(int x, int y, int width, int height) {
-  this->x = x;
-  this->y = y;
-  this->width = width;
-  this->height = height;
+Chopter::Chopter(const Point<float> &position, const Point<int> &size)
+  : position(position), size(size) {
   this->vspeed = 0;
   this->hspeed = 5;
   this->mxVspeed = 7;
@@ -29,11 +26,11 @@ void Chopter::updateSpeed() {
 }
 
 void Chopter::updatePosition() {
-  x += hspeed;
-  y += vspeed;
+  position.x += hspeed;
+  position.y += vspeed;
 
-  y = ((int)y + 480) % 480;
-  x = (int)x % 672;
+  position.y = ((int)position.y + 480) % 480;
+  position.x = (int)position.x % 672;
 }
 
 void Chopter::setStatus(Status status) {
