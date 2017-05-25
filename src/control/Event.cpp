@@ -9,7 +9,6 @@ Event::Event() {
 }
 
 bool Event::waitForStepTime() {
-  hasPressedKey = false;
   while(checkEvents()) {
     if (isTime()) {
       resetTime();
@@ -17,11 +16,6 @@ bool Event::waitForStepTime() {
     }
   }
   return !quit;
-}
-
-bool Event::checkForButtonDown() const {
-  const Uint8* currentKeyStates = SDL_GetKeyboardState(NULL);
-  return currentKeyStates[SDL_SCANCODE_UP] || hasPressedKey;
 }
 
 bool Event::checkEvents() {
@@ -39,11 +33,6 @@ bool Event::processEvent(const SDL_Event & event) {
   case SDL_QUIT:
     quit = true;
     return false;
-  case SDL_KEYDOWN:
-    if (event.key.keysym.sym == SDLK_UP) {
-      hasPressedKey = true;
-    }
-    break;
   }
   return true;
 }

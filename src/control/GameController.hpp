@@ -8,6 +8,8 @@
 
 class GameController: public Controller, private Event {
   Game game;
+  bool hasPressedKey;
+  bool checkForButtonDown() const;
   void clearScreen();
   void drawChopter(const Chopter & chopter);
   void drawColumn(int x, const Hole &hole);
