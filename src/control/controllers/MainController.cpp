@@ -7,11 +7,11 @@
 
 MainController::MainController(Logic * logic)
   : Controller(logic) {
-  btnPlay.text = "Play";
+  btnPlay.setText("Play");
   btnPlay.rect.x = 256; btnPlay.rect.y = 64;
   btnPlay.rect.w = 128; btnPlay.rect.h = 48;
   btnPlay.color = C_BLUE;
-  btnQuit.text = "Quit";
+  btnQuit.setText("Quit");
   btnQuit.rect.x = 256; btnQuit.rect.y = 480-64-48;
   btnQuit.rect.w = 128; btnQuit.rect.h = 48;
   btnQuit.color = C_RED;

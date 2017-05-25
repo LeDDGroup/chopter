@@ -7,12 +7,13 @@
 #include "../core/Point.hpp"
 
 class Button {
-public:
   std::string text;
+public:
   SDL_Rect rect;
   Uint32 color;
   void draw(SDL_Surface * surface);
   bool checkClick(const Point<int> &mousePosition);
+  void setText(const std::string & str);
 };
 
 #endif
