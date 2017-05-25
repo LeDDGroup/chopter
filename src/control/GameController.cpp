@@ -10,10 +10,12 @@ void GameController::loop() {
       bool action = checkForButtonDown();
       game.onStep(action);
       draw();
+    } else {
+      logic->nextState(Logic::MainMenu);
+      break;
     }
     hasPressedKey = false;
   }
-  logic->nextState(Logic::Quit);
 }
 
 bool GameController::processEvent(const SDL_Event & event) {
