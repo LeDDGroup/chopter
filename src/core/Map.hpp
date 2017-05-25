@@ -26,7 +26,7 @@ class Map {
   void generateMap();
   void updateBlocks(int x);
 public:
-  Map(int height = 15, int length = 21, int updateDistance = -1);
+  Map(int height = 15, int length = 21, int updateDistance = -3);
   void onStep(int position);
   bool checkCollision(const Rect &rect) const; // TODO implement
   int pxToBlock(int x, int blockWidth);
