@@ -20,13 +20,13 @@ void Button::clearSurface() {
   }
 }
 
-void Button::setText(const std::string & str) {
+void Button::setText(const char * str) {
   text = str;
   SDL_Color color;
   color.r = 255; color.g = 255;
   color.b = 255; color.a = 255;
   clearSurface();
-  surface = TTF_RenderText_Solid(font, text.c_str(), color);
+  surface = TTF_RenderText_Solid(font, text, color);
   if (surface == 0) {
     Logic::throwError();
     return;
