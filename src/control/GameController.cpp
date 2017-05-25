@@ -1,20 +1,52 @@
 #include "GameController.hpp"
-#include "Event.hpp"
 #include "color.hpp"
 
 GameController::GameController(Logic * logic)
-  : Controller(logic) {};
+  : Controller(logic), hasPressedKey(false), started(false) {};
 
 void GameController::loop() {
-  Event event;
-  while(event.waitForStepTime()) {
-    if (!game.hasFinished()) {
-      const bool action = event.checkForButtonDown();
-      game.onStep(action);
-      draw();
+  draw();
+  while(waitForStepTime()) {
+    if (started) {
+      if (!game.hasFinished()) {
+        bool action = checkForButtonDown();
+        game.onStep(action);
+        draw();
+      } else {
+        logic->nextState(Logic::MainMenu);
+        break;
+      }
     }
+    hasPressedKey = false;
   }
 }
+
+bool GameController::processEvent(const SDL_Event & event) {
+  if (!Event::processEvent(event)) {
+    logic->nextState(Logic::Quit);
+    return false;
+  }
+  switch (event.type) {
+  case SDL_KEYDOWN:
+    started = true;
+    if (event.key.keysym.sym == SDLK_UP) {
+      hasPressedKey = true;
+    }
+    break;
+  }
+  return true;
+}
+
+bool GameController::checkForButtonDown() const {
+  const Uint8* currentKeyStates = SDL_GetKeyboardState(NULL);
+  return currentKeyStates[SDL_SCANCODE_UP] || hasPressedKey;
+}
+
+
+#define C_SCREEN C_BLACK
+#define C_PLAYER C_BLUE
+#define C_CEIL C_RED
+#define C_FLOOR C_GREEN
 
 static SDL_Rect rect;
 static int xoffset;

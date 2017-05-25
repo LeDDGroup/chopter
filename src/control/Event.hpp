@@ -4,17 +4,17 @@
 #include <SDL2/SDL_events.h>
 
 class Event {
+protected:
   bool quit;
-  bool hasPressedKey;
   Uint32 prevTime;
   Uint32 timeout;
-  bool checkEvents();
   bool isTime();
   void resetTime();
+  virtual bool processEvent(const SDL_Event &event);
 public:
   Event();
   bool waitForStepTime();
-  bool checkForButtonDown() const;
+  bool checkEvents();
 };
 
 #endif

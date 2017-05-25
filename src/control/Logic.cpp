@@ -1,5 +1,6 @@
 #include "Logic.hpp"
 #include "Controller.hpp"
+#include "MainController.hpp"
 #include "GameController.hpp"
 
 void Logic::init() {
@@ -9,6 +10,7 @@ void Logic::init() {
                             640, 480,
                             SDL_WINDOW_SHOWN);
   screenSurface = SDL_GetWindowSurface(window);
+  state = MainMenu;
 }
 
 void Logic::quit() {
@@ -20,10 +22,32 @@ void Logic::manage(Controller &controller) {
   controller.loop();
 }
 
-void Logic::sign(Signal signal) {
+void Logic::nextState(State signal) {
+  state = signal;
 }
 
 void Logic::run() {
+  while(state != Quit) {
+    switch (state) {
+    case MainMenu:
+      runMainMenuController();
+      break;
+    case PlayGame:
+      runGameController();
+      break;
+    default:
+      state = Quit;
+      break;
+    }
+  }
+}
+
+void Logic::runMainMenuController() {
+  MainController controller(this);
+  manage(controller);
+}
+
+void Logic::runGameController() {
   GameController controller(this);
   manage(controller);
 }

@@ -9,35 +9,32 @@ Event::Event() {
 }
 
 bool Event::waitForStepTime() {
-  hasPressedKey = false;
-  while(checkEvents()) {}
+  while(checkEvents()) {
+    if (isTime()) {
+      resetTime();
+      break;
+    }
+  }
   return !quit;
-}
-
-bool Event::checkForButtonDown() const {
-  const Uint8* currentKeyStates = SDL_GetKeyboardState(NULL);
-  return currentKeyStates[SDL_SCANCODE_UP] || hasPressedKey;
 }
 
 bool Event::checkEvents() {
   SDL_Event event;
   while (!quit && SDL_PollEvent(&event) != 0) {
-    switch (event.type) {
-    case SDL_QUIT:
-      quit = true;
-      break;
-    case SDL_KEYDOWN:
-      if (event.key.keysym.sym == SDLK_UP) {
-        hasPressedKey = true;
-      }
+    if (!processEvent(event)) {
       break;
     }
   }
-  if (isTime()) {
-    resetTime();
+  return !quit;
+}
+
+bool Event::processEvent(const SDL_Event & event) {
+  switch (event.type) {
+  case SDL_QUIT:
+    quit = true;
     return false;
   }
-  return !quit;
+  return true;
 }
 
 bool Event::isTime() {
