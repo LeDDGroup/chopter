@@ -18,6 +18,7 @@ class Chopter {
 public:
   Chopter(const Point<float> &position = Point<float>(0, 0), const Point<int> &size = Point<int>(32, 32));
   void move(bool fuel);
+  void invertSpeed();
   int getX() const { return position.x; }
   int getY() const { return position.y; }
   int getWidth() const { return size.x; }

@@ -9,7 +9,7 @@ class Game {
   Map map;
   bool done;
   int blockWidth;
-  void checkColition();
+  bool checkColition();
   void moveChopter(bool fuel);
   void updateBlocks();
   void finish();

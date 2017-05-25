@@ -11,6 +11,7 @@ struct Hole {
 };
 
 class Map {
+  bool status;
   int updateDistance;
   int length;
   int height;

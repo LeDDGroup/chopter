@@ -37,6 +37,10 @@ void Chopter::setStatus(Status status) {
   this->status = status;
 }
 
+void Chopter::invertSpeed() {
+  vspeed *= -1;
+}
+
 void Chopter::move(bool fuel) {
   setStatus(fuel ? fly : fall);
   updateSpeed();
