@@ -1,13 +1,7 @@
 #ifndef UTILS_HPP
 #define UTILS_HPP
 
-template<typename type>
-class Point {
-public:
-  type x, y;
-  Point(type x = 0, type y = 0);
-  Point<type> operator + (const Point<type> &b) const;
-};
+#include "Point.hpp"
 
 struct Rect {
   Point<int> position, size;

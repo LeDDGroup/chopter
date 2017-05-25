@@ -14,12 +14,3 @@ bool collision(const int x1, const int x2, const int x3, const int x4) {
   }
   return false;
 }
-
-template<typename type>
-Point<type> Point<type>::operator + (const Point<type> &b) const {
-  return Point(x + b.x, y + b.y);
-}
-
-template<typename type>
-Point<type>::Point(type x, type y) : x(x), y(y) {
-}
