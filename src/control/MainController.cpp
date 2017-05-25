@@ -1,3 +1,4 @@
+#include "Logic.hpp"
 #include "MainController.hpp"
 #include "Event.hpp"
 #include "color.hpp"
@@ -16,6 +17,17 @@ MainController::MainController(Logic * logic)
 void MainController::loop() {
   Event event;
   while(event.waitForStepTime()) {
-    // TODO implement draw and button clicks
+    // TODO implement button clicks
+    draw();
   }
+}
+
+static SDL_Rect rect;
+
+void MainController::draw() {
+  rect.x = 0; rect.y = 0;
+  rect.w = 640; rect.h = 480;
+  SDL_FillRect(logic->getScreenSurface(), &rect, C_SCREEN);
+  btnPlay.draw(logic->getScreenSurface());
+  SDL_UpdateWindowSurface(logic->getWindow());
 }
