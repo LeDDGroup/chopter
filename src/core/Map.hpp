@@ -1,5 +1,5 @@
-#ifndef CHOPTER_HPP
-#define CHOPTER_HPP
+#ifndef MAP_HPP
+#define MAP_HPP
 
 #define maxWidth 10000
 
