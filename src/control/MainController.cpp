@@ -1,8 +1,12 @@
 #include "MainController.hpp"
+#include "Event.hpp"
 
 MainController::MainController(Logic * logic)
   : Controller(logic) {};
 
 void MainController::loop() {
-  // TODO implement
+  Event event;
+  while(event.waitForStepTime()) {
+    // TODO implement draw and button clicks
+  }
 }
