@@ -3,6 +3,7 @@
 
 Game::Game() {
   blockWidth = 32;
+  done = false;
 }
 
 void Game::moveChopter(bool fuel) {
