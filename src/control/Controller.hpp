@@ -7,7 +7,7 @@ class Controller {
 protected:
   Logic * logic;
 public:
-  Controller(Logic * logic = 0);
+  Controller(Logic * logic);
   virtual void init();
   virtual void loop() = 0;
 };
