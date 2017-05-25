@@ -44,6 +44,11 @@ bool MainController::processEvent(const SDL_Event & event) {
       quit = true;
       return false;
     }
+    if (btnQuit.checkClick(mouse)) {
+      logic->nextState(Logic::Quit);
+      quit = true;
+      return false;
+    }
   }
   return true;
 }
