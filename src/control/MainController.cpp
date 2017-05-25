@@ -7,11 +7,12 @@
 
 MainController::MainController(Logic * logic)
   : Controller(logic) {
-  btnPlay.rect.x = 256;
-  btnPlay.rect.y = 64;
-  btnPlay.rect.w = 128;
-  btnPlay.rect.h = 48;
+  btnPlay.rect.x = 256; btnPlay.rect.y = 64;
+  btnPlay.rect.w = 128; btnPlay.rect.h = 48;
   btnPlay.color = C_BLUE;
+  btnQuit.rect.x = 256; btnQuit.rect.y = 480-64-48;
+  btnQuit.rect.w = 128; btnQuit.rect.h = 48;
+  btnQuit.color = C_RED;
 };
 
 void MainController::loop() {
@@ -26,6 +27,7 @@ void MainController::draw() {
   rect.w = 640; rect.h = 480;
   SDL_FillRect(logic->getScreenSurface(), &rect, C_SCREEN);
   btnPlay.draw(logic->getScreenSurface());
+  btnQuit.draw(logic->getScreenSurface());
   SDL_UpdateWindowSurface(logic->getWindow());
 }
 

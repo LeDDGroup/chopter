@@ -8,6 +8,7 @@
 
 class MainController: public Controller, private Event {
   Button btnPlay;
+  Button btnQuit;
   void draw();
   bool processEvent(const SDL_Event & event);
 public:
