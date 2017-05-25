@@ -1,14 +1,9 @@
 #include "Controller.hpp"
+#include "Logic.hpp"
 
-void Controller::init() {
-  SDL_Init(SDL_INIT_VIDEO);
-  window = SDL_CreateWindow("Chopter",
-                            SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
-                            640, 480,
-                            SDL_WINDOW_SHOWN);
-  screenSurface = SDL_GetWindowSurface(window);
+Controller::Controller(Logic * logic)
+  : logic(logic) {
 }
 
-void Controller::quit() {
-  SDL_Quit();
+void Controller::init() {
 }

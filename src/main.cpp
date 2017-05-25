@@ -1,9 +1,11 @@
-#include "control/Controller.hpp"
+#include "control/Logic.hpp"
+#include "control/GameController.hpp"
 
 int main() {
-  Controller controller;
-  controller.init();
-  controller.loop();
-  controller.quit();
+  Logic logic;
+  GameController controller(&logic);
+  logic.init();
+  logic.manage(controller);
+  logic.quit();
   return 0;
 }

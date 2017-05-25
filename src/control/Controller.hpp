@@ -1,24 +1,15 @@
 #ifndef CONTROLLER_HPP
 #define CONTROLLER_HPP
 
-#include <SDL2/SDL.h>
-#include "Event.hpp"
-#include "../core/Game.hpp"
+class Logic;
 
 class Controller {
-  SDL_Window * window;
-  SDL_Surface * screenSurface;
-  Game game;
-  void clearScreen();
-  void drawChopter(const Chopter & chopter);
-  void drawColumn(int x, const Hole &hole);
-  void drawMap(const Map & map);
-  void draw();
+protected:
+  Logic * logic;
 public:
-  void init();
-  void loop();
-  void quit();
+  Controller(Logic * logic);
+  virtual void init();
+  virtual void loop() = 0;
 };
-
 
 #endif
