@@ -6,6 +6,7 @@
 #include "controllers/MainController.hpp"
 #include "controllers/GameController.hpp"
 #include "../visual/Button.hpp"
+#include "../visual/Label.hpp"
 
 bool Logic::hasError;
 
@@ -29,9 +30,15 @@ void Logic::init() {
   }
   screenSurface = SDL_GetWindowSurface(window);
   state = MainMenu;
+  Label::font = TTF_OpenFont("resource/Cantarell-Regular.otf", 28 );
+  if (Label::font == 0) {
+    throwError();
+    return;
+  }
 }
 
 void Logic::quit() {
+  TTF_CloseFont(Label::font);
   TTF_Quit();
   SDL_Quit();
 }
