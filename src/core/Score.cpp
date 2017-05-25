@@ -1,5 +1,5 @@
 #include "Score.hpp"
-#include <fstream>
+#include <cstdio>
 
 using namespace std;
 
@@ -12,10 +12,9 @@ void Score::increaseScore() {
 };
 
 void Score::saveScore() {
-  ofstream scoreFile;
-  scoreFile.open("src/data/score");
-  scoreFile << currentScore << endl;
-  scoreFile.close();
+  freopen ("src/data/score","a",stdout);
+  printf ("%i\n", currentScore);
+  fclose (stdout);
 };
 
 void Score::loadScore() {
