@@ -14,6 +14,7 @@ void GameController::loop() {
       draw();
     }
   }
+  logic->nextState(Logic::Quit);
 }
 
 #define C_SCREEN C_BLACK

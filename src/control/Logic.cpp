@@ -32,6 +32,9 @@ void Logic::run() {
     case MainMenu:
       runMainMenuController();
       break;
+    case PlayGame:
+      runGameController();
+      break;
     default:
       state = Quit;
       break;
