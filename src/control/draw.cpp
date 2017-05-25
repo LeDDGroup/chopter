@@ -1,6 +1,7 @@
 #include <SDL2/SDL_video.h>
 #include <SDL2/SDL_surface.h>
 #include "GameController.hpp"
+#include "Logic.hpp"
 #include "../core/Game.hpp"
 #include "../core/Chopter.hpp"
 #include "../core/Map.hpp"
@@ -24,13 +25,13 @@ const int height = 15;
 void GameController::clearScreen() {
   rect.x = 0; rect.y = 0;
   rect.w = 640; rect.h = 480;
-  SDL_FillRect(screenSurface, &rect, C_SCREEN);
+  SDL_FillRect(logic->getScreenSurface(), &rect, C_SCREEN);
 }
 
 void GameController::drawChopter(const Chopter & chopter) {
   rect.x = chopter.getX() - xoffset; rect.y = chopter.getY();
   rect.w = chopter.getWidth(); rect.h = chopter.getHeight();
-  SDL_FillRect(screenSurface, &rect, C_PLAYER);
+  SDL_FillRect(logic->getScreenSurface(), &rect, C_PLAYER);
 }
 
 void GameController::drawColumn(int x, const Hole &hole) {
@@ -39,11 +40,11 @@ void GameController::drawColumn(int x, const Hole &hole) {
   const int y2 = y1 + hole.size;
   for (int j = 0; j <= y1; j++) {
     rect.y = j*size;
-    SDL_FillRect(screenSurface, &rect, C_CEIL);
+    SDL_FillRect(logic->getScreenSurface(), &rect, C_CEIL);
   }
   for (int j = y2+1; j < height; j++) {
     rect.y = j*size;
-    SDL_FillRect(screenSurface, &rect, C_FLOOR);
+    SDL_FillRect(logic->getScreenSurface(), &rect, C_FLOOR);
   }
 }
 
@@ -64,5 +65,5 @@ void GameController::draw() {
   clearScreen();
   drawMap(map);
   drawChopter(chopter);
-  SDL_UpdateWindowSurface(window);
+  SDL_UpdateWindowSurface(logic->getWindow());
 }
