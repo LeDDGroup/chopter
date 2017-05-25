@@ -3,9 +3,8 @@
 
 int main() {
   Logic logic;
-  GameController controller(&logic);
   logic.init();
-  logic.manage(controller);
+  logic.run();
   logic.quit();
   return 0;
 }

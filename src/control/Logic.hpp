@@ -12,6 +12,7 @@ class Logic {
 public:
   enum Signal {};
   void init();
+  void run();
   void quit();
   void manage(Controller &controller);
   void sign(Signal signal);

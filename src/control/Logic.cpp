@@ -1,5 +1,6 @@
 #include "Logic.hpp"
 #include "Controller.hpp"
+#include "GameController.hpp"
 
 void Logic::init() {
   SDL_Init(SDL_INIT_VIDEO);
@@ -20,4 +21,9 @@ void Logic::manage(Controller &controller) {
 }
 
 void Logic::sign(Signal signal) {
+}
+
+void Logic::run() {
+  GameController controller(this);
+  manage(controller);
 }
