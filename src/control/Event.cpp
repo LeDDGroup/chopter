@@ -13,7 +13,7 @@ bool Event::waitForStepTime() {
   while(checkEvents()) {
     if (isTime()) {
       resetTime();
-      return false;
+      break;
     }
   }
   return !quit;
