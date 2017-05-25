@@ -16,6 +16,11 @@ void GameController::loop() {
   }
 }
 
+#define C_SCREEN C_BLACK
+#define C_PLAYER C_BLUE
+#define C_CEIL C_RED
+#define C_FLOOR C_GREEN
+
 static SDL_Rect rect;
 static int xoffset;
 const int size = 32;
