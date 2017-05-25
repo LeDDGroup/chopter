@@ -10,7 +10,6 @@ class Game {
   bool done;
   int blockWidth;
   void checkColition();
-  void increaseStep();
   void moveChopter(bool fuel);
   void updateBlocks();
   void finish();
