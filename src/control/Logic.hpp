@@ -12,6 +12,7 @@ class Logic {
 public:
   void init();
   void quit();
+  void manage(Controller &controller);
   SDL_Window * getWindow() { return window; }
   SDL_Surface * getScreenSurface() { return screenSurface; }
 };

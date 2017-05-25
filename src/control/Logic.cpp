@@ -13,3 +13,8 @@ void Logic::init() {
 void Logic::quit() {
   SDL_Quit();
 }
+
+void Logic::manage(Controller &controller) {
+  controller.init();
+  controller.loop();
+}
