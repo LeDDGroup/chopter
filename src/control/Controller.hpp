@@ -8,7 +8,6 @@ class Controller {
 public:
   Controller(Logic * logic = 0);
   virtual void init() = 0;
-  virtual void draw() = 0;
   virtual void loop() = 0;
 };
 
