@@ -23,6 +23,7 @@ public:
   int getY() const { return position.y; }
   int getWidth() const { return size.x; }
   int getHeight() const { return size.y; }
+  friend class Game;
 };
 
 #endif

@@ -26,9 +26,6 @@ void Chopter::updateSpeed() {
 
 void Chopter::updatePosition() {
   position = position + speed;
-
-  position.y = ((int)position.y + 480) % 480;
-  position.x = (int)position.x % 672;
 }
 
 void Chopter::setStatus(Status status) {

@@ -7,6 +7,9 @@ Game::Game() {
 
 void Game::moveChopter(bool fuel) {
   chopter.move(fuel);
+
+  // position.y = ((int)position.y + 480) % 480; TODO
+  chopter.position.x = (int)chopter.position.x % (blockWidth * map.getLength());
 }
 
 bool Game::checkColition() {
