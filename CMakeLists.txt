@@ -3,6 +3,7 @@ project(chopter)
 find_library(SDL2 sdl2)
 
 add_executable(chopter
+  src/control/Controller.cpp
   src/control/Event.cpp
   src/control/draw.cpp
   src/control/loop.cpp
