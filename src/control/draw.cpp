@@ -16,10 +16,6 @@
 #define C_CEIL C_RED
 #define C_FLOOR C_GREEN
 
-extern SDL_Window * window;
-extern SDL_Surface * screenSurface;
-extern Game game;
-
 static SDL_Rect rect;
 static int xoffset;
 const int size = 32;
