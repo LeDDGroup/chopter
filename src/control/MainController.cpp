@@ -29,3 +29,10 @@ void MainController::draw() {
   btnPlay.draw(logic->getScreenSurface());
   SDL_UpdateWindowSurface(logic->getWindow());
 }
+
+bool MainController::processEvent(const SDL_Event & event) {
+  if (!Event::processEvent(event)) {
+    return false;
+  }
+  return true;
+}
