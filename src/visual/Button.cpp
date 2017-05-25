@@ -35,9 +35,13 @@ void Button::setText(const std::string & str) {
   fontrect.w = surface->w; fontrect.h = surface->h;
 }
 
-void Button::draw(SDL_Surface * surface) {
-  SDL_FillRect(surface, &rect, color);
-  // TODO draw text
+void Button::draw(SDL_Surface * screen) {
+  SDL_Rect cpy = fontrect;
+  cpy.x = rect.x + (rect.w - fontrect.w) / 2;
+  cpy.y = rect.y + (rect.h - fontrect.h) / 2;
+  SDL_FillRect(screen, &rect, color);
+  SDL_BlitSurface(surface, &fontrect,
+                  screen, &cpy);
 }
 
 bool Button::checkClick(const Point<int> &mousePosition) {
