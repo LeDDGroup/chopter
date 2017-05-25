@@ -10,9 +10,11 @@ class Logic {
   SDL_Window * window;
   SDL_Surface * screenSurface;
 public:
+  enum Signal {};
   void init();
   void quit();
   void manage(Controller &controller);
+  void sign(Signal signal);
   SDL_Window * getWindow() { return window; }
   SDL_Surface * getScreenSurface() { return screenSurface; }
 };

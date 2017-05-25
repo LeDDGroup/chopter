@@ -18,3 +18,6 @@ void Logic::manage(Controller &controller) {
   controller.init();
   controller.loop();
 }
+
+void Logic::sign(Signal signal) {
+}
