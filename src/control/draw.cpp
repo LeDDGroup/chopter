@@ -1,6 +1,6 @@
 #include <SDL2/SDL_video.h>
 #include <SDL2/SDL_surface.h>
-#include "Controller.hpp"
+#include "GameController.hpp"
 #include "../core/Game.hpp"
 #include "../core/Chopter.hpp"
 #include "../core/Map.hpp"
@@ -25,19 +25,19 @@ static int xoffset;
 const int size = 32;
 const int height = 15;
 
-void Controller::clearScreen() {
+void GameController::clearScreen() {
   rect.x = 0; rect.y = 0;
   rect.w = 640; rect.h = 480;
   SDL_FillRect(screenSurface, &rect, C_SCREEN);
 }
 
-void Controller::drawChopter(const Chopter & chopter) {
+void GameController::drawChopter(const Chopter & chopter) {
   rect.x = chopter.getX() - xoffset; rect.y = chopter.getY();
   rect.w = chopter.getWidth(); rect.h = chopter.getHeight();
   SDL_FillRect(screenSurface, &rect, C_PLAYER);
 }
 
-void Controller::drawColumn(int x, const Hole &hole) {
+void GameController::drawColumn(int x, const Hole &hole) {
   rect.x = x;
   const int y1 = hole.height;
   const int y2 = y1 + hole.size;
@@ -51,7 +51,7 @@ void Controller::drawColumn(int x, const Hole &hole) {
   }
 }
 
-void Controller::drawMap(const Map & map) {
+void GameController::drawMap(const Map & map) {
   rect.w = size; rect.h = size;
   const int length = map.getLength();
   const Hole * field = map.getField();
@@ -61,7 +61,7 @@ void Controller::drawMap(const Map & map) {
   }
 }
 
-void Controller::draw() {
+void GameController::draw() {
   const Chopter &chopter = game.getChopter();
   const Map &map = game.getMap();
   xoffset = chopter.getX();

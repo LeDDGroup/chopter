@@ -1,11 +1,11 @@
-#ifndef CONTROLLER_HPP
-#define CONTROLLER_HPP
+#ifndef GAMECONTROLLER_HPP
+#define GAMECONTROLLER_HPP
 
 #include <SDL2/SDL.h>
 #include "Event.hpp"
 #include "../core/Game.hpp"
 
-class Controller {
+class GameController {
   SDL_Window * window;
   SDL_Surface * screenSurface;
   Game game;

@@ -1,8 +1,8 @@
 #include <SDL2/SDL_events.h>
-#include "Controller.hpp"
+#include "GameController.hpp"
 #include "Event.hpp"
 
-void Controller::loop() {
+void GameController::loop() {
   Event event;
   while(event.waitForStepTime()) {
     if (!game.hasFinished()) {

@@ -1,7 +1,7 @@
-#include "control/Controller.hpp"
+#include "control/GameController.hpp"
 
 int main() {
-  Controller controller;
+  GameController controller;
   controller.init();
   controller.loop();
   controller.quit();

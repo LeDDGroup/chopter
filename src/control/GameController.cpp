@@ -1,6 +1,6 @@
-#include "Controller.hpp"
+#include "GameController.hpp"
 
-void Controller::init() {
+void GameController::init() {
   SDL_Init(SDL_INIT_VIDEO);
   window = SDL_CreateWindow("Chopter",
                             SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
@@ -9,6 +9,6 @@ void Controller::init() {
   screenSurface = SDL_GetWindowSurface(window);
 }
 
-void Controller::quit() {
+void GameController::quit() {
   SDL_Quit();
 }
