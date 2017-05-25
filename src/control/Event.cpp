@@ -10,7 +10,12 @@ Event::Event() {
 
 bool Event::waitForStepTime() {
   hasPressedKey = false;
-  while(checkEvents()) {}
+  while(checkEvents()) {
+    if (isTime()) {
+      resetTime();
+      return false;
+    }
+  }
   return !quit;
 }
 
@@ -25,10 +30,6 @@ bool Event::checkEvents() {
     if (!processEvent(event)) {
       break;
     }
-  }
-  if (isTime()) {
-    resetTime();
-    return false;
   }
   return !quit;
 }
