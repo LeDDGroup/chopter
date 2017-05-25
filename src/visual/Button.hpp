@@ -2,6 +2,7 @@
 #define BUTTON_HPP
 
 #include <string>
+#include <SDL2/SDL_ttf.h>
 #include <SDL2/SDL_video.h>
 #include <SDL2/SDL_rect.h>
 #include "../core/Point.hpp"
@@ -9,6 +10,7 @@
 class Button {
   std::string text;
 public:
+  static TTF_Font *font;
   SDL_Rect rect;
   Uint32 color;
   void draw(SDL_Surface * surface);

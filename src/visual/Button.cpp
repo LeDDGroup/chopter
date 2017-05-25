@@ -1,5 +1,7 @@
 #include "Button.hpp"
 
+TTF_Font * Button::font = 0;
+
 void Button::setText(const std::string & str) {
   text = str;
   // TODO implement

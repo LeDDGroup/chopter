@@ -1,3 +1,5 @@
+#include <SDL2/SDL.h>
+#include <SDL2/SDL_ttf.h>
 #include "Logic.hpp"
 #include "Controller.hpp"
 #include "controllers/MainController.hpp"
@@ -5,6 +7,7 @@
 
 void Logic::init() {
   SDL_Init(SDL_INIT_VIDEO);
+  TTF_Init();
   window = SDL_CreateWindow("Chopter",
                             SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
                             640, 480,
@@ -14,6 +17,7 @@ void Logic::init() {
 }
 
 void Logic::quit() {
+  TTF_Quit();
   SDL_Quit();
 }
 
