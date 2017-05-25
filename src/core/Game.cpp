@@ -37,7 +37,7 @@ void Game::updateBlocks() {
 
 void Game::onStep(bool fuel) {
   moveChopter(fuel);
-  if (!checkColition()) chopter.invertSpeed();
+  if (!checkColition()) finish();
   updateBlocks();
 }
 
