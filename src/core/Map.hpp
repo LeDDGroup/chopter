@@ -1,4 +1,5 @@
-#pragma once
+#ifndef CHOPTER_HPP
+#define CHOPTER_HPP
 
 #define maxWidth 10000
 
@@ -28,3 +29,5 @@ public:
   int getLength() const { return this->length; }
   const Hole * getField() const { return this->field; }
 };
+
+#endif

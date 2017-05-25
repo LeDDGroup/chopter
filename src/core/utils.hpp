@@ -1,4 +1,5 @@
-#pragma once
+#ifndef UTILS_HPP
+#define UTILS_HPP
 
 struct Point {
   int x, y;
@@ -13,3 +14,5 @@ struct Rect {
 bool collission(const Rect &a, const Rect &b);
 
 bool collission(const int x1, const int x2, const int y1, const int y2);
+
+#endif

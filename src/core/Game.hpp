@@ -1,4 +1,6 @@
-#pragma once
+#ifndef GAME_HPP
+#define GAME_HPP
+
 #include "Chopter.hpp"
 #include "Map.hpp"
 
@@ -20,3 +22,5 @@ public:
   const Chopter & getChopter() const { return this->chopter; }
   const Map & getMap() const { return this->map; }
 };
+
+#endif

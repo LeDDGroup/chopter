@@ -1,4 +1,5 @@
-#pragma once
+#ifndef CHOPTER_HPP
+#define CHOPTER_HPP
 
 class Chopter {
   static const float accel = 0.8;
@@ -20,3 +21,5 @@ public:
   int getWidth() const { return width; }
   int getHeight() const { return height; }
 };
+
+#endif
