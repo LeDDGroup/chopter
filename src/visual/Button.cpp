@@ -22,7 +22,17 @@ void Button::clearSurface() {
 
 void Button::setText(const std::string & str) {
   text = str;
-  // TODO implement
+  SDL_Color color;
+  color.r = 255; color.g = 255;
+  color.b = 255; color.a = 255;
+  clearSurface();
+  surface = TTF_RenderText_Solid(font, text.c_str(), color);
+  if (surface == 0) {
+    Logic::throwError();
+    return;
+  }
+  fontrect.x = 0; fontrect.y = 0;
+  fontrect.w = surface->w; fontrect.h = surface->h;
 }
 
 void Button::draw(SDL_Surface * surface) {
