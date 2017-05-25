@@ -86,6 +86,7 @@ void GameController::drawMap(const Map & map) {
   for (int i = 0; i < length; i++) {
     drawColumn(i * size - xoffset, field[i]);
     drawColumn((i+length) * size - xoffset, field[i]);
+    drawColumn((i-length) * size - xoffset, field[i]);
   }
 }
 
