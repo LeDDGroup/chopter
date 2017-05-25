@@ -9,7 +9,12 @@
 
 class Button {
   std::string text;
+  SDL_Surface * surface;
+  SDL_Rect fontrect;
+  void clearSurface();
 public:
+  Button();
+  ~Button();
   static TTF_Font *font;
   SDL_Rect rect;
   Uint32 color;

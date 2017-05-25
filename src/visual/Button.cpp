@@ -1,6 +1,24 @@
+#include <SDL2/SDL_ttf.h>
 #include "Button.hpp"
+#include "../control/color.hpp"
+#include "../control/Logic.hpp"
 
 TTF_Font * Button::font = 0;
+
+Button::Button()
+  : text(), surface(0) {
+}
+
+Button::~Button() {
+  clearSurface();
+}
+
+void Button::clearSurface() {
+  if (surface) {
+    SDL_FreeSurface(surface);
+    surface = 0;
+  }
+}
 
 void Button::setText(const std::string & str) {
   text = str;
