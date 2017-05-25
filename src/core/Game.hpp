@@ -17,7 +17,7 @@ class Game {
   void increaseStep();
   void moveChopter(bool fuel);
   void updateBlocks();
-  void finish(); // TODO implement
+  void finish();
 public:
   Game();
   void onStep(bool buttonStatus);

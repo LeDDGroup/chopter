@@ -31,3 +31,7 @@ void Game::onStep(bool fuel) {
   updateBlocks();
   increaseStep();
 }
+
+void Game::finish() {
+  done = true;
+}
