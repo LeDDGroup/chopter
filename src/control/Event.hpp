@@ -9,13 +9,13 @@ protected:
   bool hasPressedKey;
   Uint32 prevTime;
   Uint32 timeout;
-  bool checkEvents();
   bool isTime();
   void resetTime();
 public:
   Event();
   bool waitForStepTime();
   bool checkForButtonDown() const;
+  bool checkEvents();
 };
 
 #endif
