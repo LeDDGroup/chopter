@@ -11,6 +11,7 @@ protected:
   Uint32 timeout;
   bool isTime();
   void resetTime();
+  virtual bool processEvent(const SDL_Event &event);
 public:
   Event();
   bool waitForStepTime();
