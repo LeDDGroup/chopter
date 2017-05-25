@@ -5,7 +5,7 @@ int main() {
   Logic logic;
   GameController controller(&logic);
   logic.init();
-  controller.loop();
+  logic.manage(controller);
   logic.quit();
   return 0;
 }
