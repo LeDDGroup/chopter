@@ -5,9 +5,9 @@
 #include <SDL2/SDL_rect.h>
 
 class Button {
+public:
   SDL_Rect rect;
   Uint32 color;
-public:
   void draw(SDL_Surface * surface);
 };
 
