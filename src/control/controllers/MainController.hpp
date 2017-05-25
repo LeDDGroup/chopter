@@ -2,9 +2,9 @@
 #define MAINCONTROLLER_HPP
 
 #include <SDL2/SDL_events.h>
-#include "Controller.hpp"
-#include "Event.hpp"
-#include "../visual/Button.hpp"
+#include "../../visual/Button.hpp"
+#include "../Controller.hpp"
+#include "../Event.hpp"
 
 class MainController: public Controller, private Event {
   Button btnPlay;

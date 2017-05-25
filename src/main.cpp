@@ -1,5 +1,4 @@
 #include "control/Logic.hpp"
-#include "control/GameController.hpp"
 
 int main() {
   Logic logic;

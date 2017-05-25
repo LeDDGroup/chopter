@@ -1,5 +1,5 @@
 #include "GameController.hpp"
-#include "color.hpp"
+#include "../color.hpp"
 
 GameController::GameController(Logic * logic)
   : Controller(logic), hasPressedKey(false), started(false) {};

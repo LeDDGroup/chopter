@@ -5,9 +5,9 @@ find_library(SDL2 sdl2)
 add_executable(chopter
   src/control/Controller.cpp
   src/control/Event.cpp
-  src/control/GameController.cpp
   src/control/Logic.cpp
-  src/control/MainController.cpp
+  src/control/controllers/GameController.cpp
+  src/control/controllers/MainController.cpp
   src/core/Chopter.cpp
   src/core/Game.cpp
   src/core/Map.cpp

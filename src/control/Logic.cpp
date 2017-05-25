@@ -1,7 +1,7 @@
 #include "Logic.hpp"
 #include "Controller.hpp"
-#include "MainController.hpp"
-#include "GameController.hpp"
+#include "controllers/MainController.hpp"
+#include "controllers/GameController.hpp"
 
 void Logic::init() {
   SDL_Init(SDL_INIT_VIDEO);

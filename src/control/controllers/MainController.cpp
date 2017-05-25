@@ -1,7 +1,7 @@
-#include "Logic.hpp"
+#include "../Logic.hpp"
+#include "../color.hpp"
+#include "../../core/Point.hpp"
 #include "MainController.hpp"
-#include "color.hpp"
-#include "../core/Point.hpp"
 
 #define C_SCREEN C_BLACK
 
