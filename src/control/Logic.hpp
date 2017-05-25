@@ -7,16 +7,20 @@
 class Controller;
 
 class Logic {
+public:
+  enum State { Quit, MainMenu, PlayGame };
+private:
   SDL_Window * window;
   SDL_Surface * screenSurface;
+  void runMainMenuController();
   void runGameController();
+  State state;
 public:
-  enum Signal { PlayGame };
   void init();
   void run();
   void quit();
   void manage(Controller &controller);
-  void sign(Signal signal);
+  void nextState(State signal);
   SDL_Window * getWindow() { return window; }
   SDL_Surface * getScreenSurface() { return screenSurface; }
 };

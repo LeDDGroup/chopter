@@ -30,11 +30,12 @@ void MainController::draw() {
 
 bool MainController::processEvent(const SDL_Event & event) {
   if (!Event::processEvent(event)) {
+    logic->nextState(Logic::Quit);
     return false;
   }
   if (event.type == SDL_MOUSEBUTTONDOWN) {
     // TODO check for actual click on the button
-    // TODO send to next screen
+    logic->nextState(Logic::PlayGame);
     quit = true;
     return false;
   }
