@@ -16,6 +16,7 @@ class Chopter {
 public:
   Chopter(int x = 0, int y = 0, int width = 32, int height = 32);
   void move(bool fuel);
+  void invertSpeed();
   int getX() const { return x; }
   int getY() const { return y; }
   int getWidth() const { return width; }
