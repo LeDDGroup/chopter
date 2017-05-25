@@ -7,6 +7,7 @@ add_executable(chopter
   src/core/Chopter.cpp
   src/core/Game.cpp
   src/core/Map.cpp
+  src/core/utils.cpp
   src/draw.cpp
   src/loop.cpp
   src/main.cpp

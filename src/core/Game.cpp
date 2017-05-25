@@ -1,23 +1,36 @@
 #include "Game.hpp"
+#include "Map.hpp"
 
 Game::Game() {
-  steps = 0;
-  verticalChopterSteps = 1;
-  horizontalChopterSteps = 20;
   blockWidth = 32;
 }
 
-void Game::increaseStep() {
-  steps++;
-}
-
 void Game::moveChopter(bool fuel) {
-  if (steps % verticalChopterSteps == 0) {
-    chopter.move(fuel);
-  }
+  chopter.move(fuel);
+
+  // position.y = ((int)position.y + 480) % 480; TODO
+  chopter.position.x = (int)chopter.position.x % (blockWidth * map.getLength());
 }
 
-void Game::checkColition() {
+bool Game::checkColition() {
+  int xChopter = chopter.getX();
+  int yChopter = chopter.getY();
+  const Hole * field = map.getField();
+  int chopterPosition = map.pxToBlock(xChopter, blockWidth) % map.getLength();
+  int otherBlock = map.pxToBlock(xChopter + chopter.getWidth() - 1, blockWidth) % map.getLength();
+  if(field[chopterPosition].height * blockWidth >= yChopter - blockWidth ) {
+    return false;
+  }
+  if((field[chopterPosition].height + field[chopterPosition].size) * blockWidth <= yChopter) {
+    return false;
+  }
+  if(field[otherBlock].height * blockWidth >= yChopter - blockWidth) {
+    return false;
+  }
+  if((field[otherBlock].height + field[otherBlock].size) * blockWidth <= yChopter) {
+    return false;
+  }
+  return true;
 }
 
 void Game::updateBlocks() {
@@ -27,7 +40,10 @@ void Game::updateBlocks() {
 
 void Game::onStep(bool fuel) {
   moveChopter(fuel);
-  checkColition();
+  if (!checkColition()) finish();
   updateBlocks();
-  increaseStep();
+}
+
+void Game::finish() {
+  done = true;
 }

@@ -9,8 +9,10 @@ void draw();
 void loop() {
   Event event;
   while(event.waitForStepTime()) {
-    const bool action = event.checkForButtonDown();
-    game.onStep(action);
-    draw();
+    if (!game.hasFinished()) {
+      const bool action = event.checkForButtonDown();
+      game.onStep(action);
+      draw();
+    }
   }
 }

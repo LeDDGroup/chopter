@@ -1,22 +1,29 @@
-#pragma once
+#ifndef CHOPTER_HPP
+#define CHOPTER_HPP
+
+#include "Point.hpp"
 
 class Chopter {
-  static const float accel = 0.8;
-  static const float gravity = 1.3;
+  static const float accel;
+  static const float gravity;
   enum Status { fly, fall };
-  float x, y;
-  int width, height;
-  float vspeed, hspeed;
+  Point<float> position;
+  Point<int> size;
+  Point<float> speed;
   float mxVspeed, mnVspeed;
   Status status;
   void setStatus(Status status);
   void updateSpeed();
   void updatePosition();
 public:
-  Chopter(int x = 0, int y = 0, int width = 32, int height = 32);
+  Chopter(const Point<float> &position = Point<float>(0, 320), const Point<int> &size = Point<int>(32, 32));
   void move(bool fuel);
-  int getX() const { return x; }
-  int getY() const { return y; }
-  int getWidth() const { return width; }
-  int getHeight() const { return height; }
+  void invertSpeed();
+  int getX() const { return position.x; }
+  int getY() const { return position.y; }
+  int getWidth() const { return size.x; }
+  int getHeight() const { return size.y; }
+  friend class Game;
 };
+
+#endif

@@ -1,40 +1,39 @@
 #include "Chopter.hpp"
 
-Chopter::Chopter(int x, int y, int width, int height) {
-  this->x = x;
-  this->y = y;
-  this->width = width;
-  this->height = height;
-  this->vspeed = 0;
-  this->hspeed = 5;
+const float Chopter::accel = 0.8;
+const float Chopter::gravity = 1.3;
+
+Chopter::Chopter(const Point<float> &position, const Point<int> &size)
+  : position(position), size(size) {
+  speed = Point<float>(5, 0);
   this->mxVspeed = 7;
   this->mnVspeed = -12;
 }
 
 void Chopter::updateSpeed() {
   if (status == fly) {
-    vspeed -= accel;
+    speed.y -= accel;
   } else {
-    vspeed += gravity;
+    speed.y += gravity;
   }
-  if(vspeed > mxVspeed) {
-    vspeed = mxVspeed;
+  if(speed.y > mxVspeed) {
+    speed.y = mxVspeed;
   }
-  if(vspeed < mnVspeed) {
-    vspeed = mnVspeed;
+  if(speed.y < mnVspeed) {
+    speed.y = mnVspeed;
   }
 }
 
 void Chopter::updatePosition() {
-  x += hspeed;
-  y += vspeed;
-
-  y = ((int)y + 480) % 480;
-  x = (int)x % 672;
+  position = position + speed;
 }
 
 void Chopter::setStatus(Status status) {
   this->status = status;
+}
+
+void Chopter::invertSpeed() {
+  speed.y *= -1;
 }
 
 void Chopter::move(bool fuel) {
