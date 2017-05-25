@@ -92,7 +92,7 @@ void GameController::drawMap(const Map & map) {
 void GameController::draw() {
   const Chopter &chopter = game.getChopter();
   const Map &map = game.getMap();
-  xoffset = chopter.getX();
+  xoffset = chopter.getX() - 64;
   clearScreen();
   drawMap(map);
   drawChopter(chopter);
