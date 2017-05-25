@@ -1,6 +1,7 @@
 #include "Logic.hpp"
 #include "MainController.hpp"
 #include "color.hpp"
+#include "../core/Point.hpp"
 
 #define C_SCREEN C_BLACK
 
@@ -34,10 +35,13 @@ bool MainController::processEvent(const SDL_Event & event) {
     return false;
   }
   if (event.type == SDL_MOUSEBUTTONDOWN) {
-    // TODO check for actual click on the button
-    logic->nextState(Logic::PlayGame);
-    quit = true;
-    return false;
+    Point<int> mouse;
+    SDL_GetMouseState(&mouse.x, &mouse.y);
+    if (btnPlay.checkClick(mouse)) {
+      logic->nextState(Logic::PlayGame);
+      quit = true;
+      return false;
+    }
   }
   return true;
 }
