@@ -3,6 +3,7 @@
 
 Game::Game() {
   blockWidth = 32;
+  score = 0;
 }
 
 void Game::moveChopter(bool fuel) {
@@ -42,6 +43,7 @@ void Game::onStep(bool fuel) {
   moveChopter(fuel);
   if (!checkColition()) finish();
   updateBlocks();
+  score++;
 }
 
 void Game::finish() {
