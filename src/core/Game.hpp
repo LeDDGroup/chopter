@@ -4,15 +4,11 @@
 #include "Chopter.hpp"
 #include "Map.hpp"
 
-
 class Game {
   Chopter chopter;
   Map map;
   bool done;
   int blockWidth;
-  int horizontalChopterSteps;
-  int verticalChopterSteps;
-  unsigned long long int steps;
   void checkColition();
   void increaseStep();
   void moveChopter(bool fuel);

@@ -1,9 +1,6 @@
 #include "Game.hpp"
 
 Game::Game() {
-  steps = 0;
-  verticalChopterSteps = 1;
-  horizontalChopterSteps = 20;
   blockWidth = 32;
 }
 
