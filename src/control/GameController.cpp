@@ -1,20 +1,26 @@
 #include "GameController.hpp"
-#include "Event.hpp"
 #include "color.hpp"
 
 GameController::GameController(Logic * logic)
   : Controller(logic) {};
 
 void GameController::loop() {
-  Event event;
-  while(event.waitForStepTime()) {
+  while(waitForStepTime()) {
     if (!game.hasFinished()) {
-      const bool action = event.checkForButtonDown();
+      const bool action = checkForButtonDown();
       game.onStep(action);
       draw();
     }
   }
   logic->nextState(Logic::Quit);
+}
+
+bool GameController::processEvent(const SDL_Event & event) {
+  if (!Event::processEvent(event)) {
+    logic->nextState(Logic::Quit);
+    return false;
+  }
+  return true;
 }
 
 #define C_SCREEN C_BLACK
