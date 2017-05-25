@@ -9,8 +9,9 @@ class Controller;
 class Logic {
   SDL_Window * window;
   SDL_Surface * screenSurface;
+  void runGameController();
 public:
-  enum Signal {};
+  enum Signal { PlayGame };
   void init();
   void run();
   void quit();

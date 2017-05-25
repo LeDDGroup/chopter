@@ -21,9 +21,18 @@ void Logic::manage(Controller &controller) {
 }
 
 void Logic::sign(Signal signal) {
+  switch (signal) {
+  case PlayGame:
+    runGameController();
+    break;
+  }
 }
 
 void Logic::run() {
+  runGameController();
+}
+
+void Logic::runGameController() {
   MainController controller(this);
   manage(controller);
 }
