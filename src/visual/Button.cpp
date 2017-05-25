@@ -2,6 +2,7 @@
 
 void Button::draw(SDL_Surface * surface) {
   SDL_FillRect(surface, &rect, color);
+  // TODO draw text
 }
 
 bool Button::checkClick(const Point<int> &mousePosition) {
