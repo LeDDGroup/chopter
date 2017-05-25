@@ -1,7 +1,6 @@
 #ifndef GAMECONTROLLER_HPP
 #define GAMECONTROLLER_HPP
 
-#include <SDL2/SDL.h>
 #include "Logic.hpp"
 #include "Controller.hpp"
 #include "../core/Game.hpp"
