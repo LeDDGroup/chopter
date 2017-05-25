@@ -1,4 +1,5 @@
 #include "Logic.hpp"
+#include "Controller.hpp"
 
 void Logic::init() {
   SDL_Init(SDL_INIT_VIDEO);
