@@ -9,6 +9,7 @@
 class GameController: public Controller, private Event {
   Game game;
   bool hasPressedKey;
+  bool started;
   bool checkForButtonDown() const;
   void clearScreen();
   void drawChopter(const Chopter & chopter);

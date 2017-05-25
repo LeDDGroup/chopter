@@ -2,17 +2,20 @@
 #include "color.hpp"
 
 GameController::GameController(Logic * logic)
-  : Controller(logic), hasPressedKey(false) {};
+  : Controller(logic), hasPressedKey(false), started(false) {};
 
 void GameController::loop() {
+  draw();
   while(waitForStepTime()) {
-    if (!game.hasFinished()) {
-      bool action = checkForButtonDown();
-      game.onStep(action);
-      draw();
-    } else {
-      logic->nextState(Logic::MainMenu);
-      break;
+    if (started) {
+      if (!game.hasFinished()) {
+        bool action = checkForButtonDown();
+        game.onStep(action);
+        draw();
+      } else {
+        logic->nextState(Logic::MainMenu);
+        break;
+      }
     }
     hasPressedKey = false;
   }
@@ -25,6 +28,7 @@ bool GameController::processEvent(const SDL_Event & event) {
   }
   switch (event.type) {
   case SDL_KEYDOWN:
+    started = true;
     if (event.key.keysym.sym == SDLK_UP) {
       hasPressedKey = true;
     }
