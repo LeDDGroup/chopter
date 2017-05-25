@@ -16,8 +16,8 @@ bool Game::checkColition() {
   int xChopter = chopter.getX();
   int yChopter = chopter.getY();
   const Hole * field = map.getField();
-  int chopterPosition = map.pxToBlock(xChopter, blockWidth);
-  int otherBlock = map.pxToBlock(xChopter + chopter.getWidth() - 1, blockWidth);
+  int chopterPosition = map.pxToBlock(xChopter, blockWidth) % map.getLength();
+  int otherBlock = map.pxToBlock(xChopter + chopter.getWidth() - 1, blockWidth) % map.getLength();
   if(field[chopterPosition].height * blockWidth >= yChopter - blockWidth ) {
     return false;
   }
