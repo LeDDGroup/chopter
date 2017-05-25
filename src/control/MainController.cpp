@@ -1,6 +1,5 @@
 #include "Logic.hpp"
 #include "MainController.hpp"
-#include "Event.hpp"
 #include "color.hpp"
 
 #define C_SCREEN C_BLACK
@@ -15,8 +14,7 @@ MainController::MainController(Logic * logic)
 };
 
 void MainController::loop() {
-  Event event;
-  while(event.waitForStepTime()) {
+  while(waitForStepTime()) {
     // TODO implement button clicks
     draw();
   }
