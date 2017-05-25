@@ -1,7 +1,5 @@
 project(chopter)
 
-find_library(SDL2 sdl2)
-
 add_executable(chopter
   src/control/Controller.cpp
   src/control/Event.cpp
@@ -16,4 +14,4 @@ add_executable(chopter
   src/main.cpp
   )
 
-target_link_libraries(chopter SDL2)
+target_link_libraries(chopter SDL2 SDL2_ttf)

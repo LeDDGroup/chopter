@@ -10,12 +10,14 @@ class Logic {
 public:
   enum State { Quit, MainMenu, PlayGame };
 private:
+  static bool hasError;
   SDL_Window * window;
   SDL_Surface * screenSurface;
   void runMainMenuController();
   void runGameController();
   State state;
 public:
+  static void throwError() { hasError = true; }
   void init();
   void run();
   void quit();
