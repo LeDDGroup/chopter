@@ -14,8 +14,7 @@ MainController::MainController(Logic * logic)
 };
 
 void MainController::loop() {
-  while(waitForStepTime()) {
-    // TODO implement button clicks
+  while(checkEvents()) {
     draw();
   }
 }
