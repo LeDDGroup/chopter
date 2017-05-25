@@ -3,10 +3,11 @@
 
 #include "Chopter.hpp"
 #include "Map.hpp"
+#include "Score.hpp"
 
 class Game {
-  long long score;
   Chopter chopter;
+  Score score;
   Map map;
   bool done;
   int blockWidth;
@@ -20,7 +21,7 @@ public:
   const Chopter & getChopter() const { return this->chopter; }
   const Map & getMap() const { return this->map; }
   bool hasFinished() const { return this->done; }
-  int getScore() const { return this->score; }
+  int getScore() const { return this->score.getCurrentScore(); }
   void start(); // TODO implement
 };
 
