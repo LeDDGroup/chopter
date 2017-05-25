@@ -6,6 +6,7 @@
 class MainController: public Controller {
 public:
   MainController(Logic * logic);
+  void loop();
 };
 
 #endif
