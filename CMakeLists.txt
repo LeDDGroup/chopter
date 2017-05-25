@@ -11,6 +11,7 @@ add_executable(chopter
   src/core/Game.cpp
   src/core/Map.cpp
   src/core/utils.cpp
+  src/visual/Button.cpp
   src/main.cpp
   )
 
