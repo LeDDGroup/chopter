@@ -1,8 +1,8 @@
 #include <SDL2/SDL_video.h>
 #include <SDL2/SDL_surface.h>
-#include "core/Game.hpp"
-#include "core/Chopter.hpp"
-#include "core/Map.hpp"
+#include "../core/Game.hpp"
+#include "../core/Chopter.hpp"
+#include "../core/Map.hpp"
 
 #define C_BLACK 0x00000000
 #define C_WHITE 0xFFFFFFFF

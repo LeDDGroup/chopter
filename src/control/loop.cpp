@@ -1,5 +1,5 @@
 #include <SDL2/SDL_events.h>
-#include "core/Game.hpp"
+#include "../core/Game.hpp"
 #include "Event.hpp"
 
 extern Game game;
