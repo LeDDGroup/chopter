@@ -6,21 +6,23 @@
 
 
 class Game {
-  unsigned long long int steps;
-  int verticalChopterSteps;
-  int horizontalChopterSteps;
-  int blockWidth;
-  void increaseStep();
-  void moveChopter(bool fuel);
-  void checkColition();
-  void updateBlocks();
   Chopter chopter;
   Map map;
+  bool done;
+  int blockWidth;
+  int horizontalChopterSteps;
+  int verticalChopterSteps;
+  unsigned long long int steps;
+  void checkColition();
+  void increaseStep();
+  void moveChopter(bool fuel);
+  void updateBlocks();
 public:
   Game();
   void onStep(bool buttonStatus);
   const Chopter & getChopter() const { return this->chopter; }
   const Map & getMap() const { return this->map; }
+  bool hasFinished() const { return this->done; }
 };
 
 #endif
