@@ -4,7 +4,6 @@
 #include <SDL2/SDL.h>
 #include "Logic.hpp"
 #include "Controller.hpp"
-#include "Event.hpp"
 #include "../core/Game.hpp"
 
 class GameController: public Controller {
