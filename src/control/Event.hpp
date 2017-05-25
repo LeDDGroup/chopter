@@ -4,6 +4,7 @@
 #include <SDL2/SDL_events.h>
 
 class Event {
+protected:
   bool quit;
   bool hasPressedKey;
   Uint32 prevTime;
