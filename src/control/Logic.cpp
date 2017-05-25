@@ -5,6 +5,7 @@
 #include "Controller.hpp"
 #include "controllers/MainController.hpp"
 #include "controllers/GameController.hpp"
+#include "../visual/Button.hpp"
 
 bool Logic::hasError;
 
@@ -28,9 +29,15 @@ void Logic::init() {
   }
   screenSurface = SDL_GetWindowSurface(window);
   state = MainMenu;
+  Button::font = TTF_OpenFont("resource/Cantarell-Regular.otf", 28 );
+  if (Button::font == 0) {
+    throwError();
+    return;
+  }
 }
 
 void Logic::quit() {
+  TTF_CloseFont(Button::font);
   TTF_Quit();
   SDL_Quit();
 }
