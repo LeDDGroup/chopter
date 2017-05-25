@@ -1,3 +1,4 @@
+#include <cstdio>
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_ttf.h>
 #include "Logic.hpp"
@@ -5,13 +6,26 @@
 #include "controllers/MainController.hpp"
 #include "controllers/GameController.hpp"
 
+bool Logic::hasError;
+
 void Logic::init() {
-  SDL_Init(SDL_INIT_VIDEO);
-  TTF_Init();
+  hasError = false;
+  if (SDL_Init(SDL_INIT_VIDEO) == -1) {
+    throwError();
+    return;
+  }
+  if (TTF_Init() == -1) {
+    throwError();
+    return;
+  }
   window = SDL_CreateWindow("Chopter",
                             SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
                             640, 480,
                             SDL_WINDOW_SHOWN);
+  if (window == 0) {
+    throwError();
+    return;
+  }
   screenSurface = SDL_GetWindowSurface(window);
   state = MainMenu;
 }
@@ -31,6 +45,9 @@ void Logic::nextState(State signal) {
 }
 
 void Logic::run() {
+  if (hasError) {
+    nextState(Quit);
+  }
   while(state != Quit) {
     switch (state) {
     case MainMenu:
@@ -43,6 +60,10 @@ void Logic::run() {
       state = Quit;
       break;
     }
+  }
+  if (hasError) {
+    printf("SDL Error: %s\n", SDL_GetError());
+    printf("SDL_ttf Error: %s\n", TTF_GetError());
   }
 }
 
