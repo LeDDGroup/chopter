@@ -14,9 +14,8 @@ MainController::MainController(Logic * logic)
 };
 
 void MainController::loop() {
-  while(checkEvents()) {
-    draw();
-  }
+  draw();
+  while(checkEvents()) {}
 }
 
 static SDL_Rect rect;
