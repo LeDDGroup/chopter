@@ -5,29 +5,28 @@ const float Chopter::gravity = 1.3;
 
 Chopter::Chopter(const Point<float> &position, const Point<int> &size)
   : position(position), size(size) {
-  this->vspeed = 0;
-  this->hspeed = 5;
+  speed = Point<float>(5, 0);
   this->mxVspeed = 7;
   this->mnVspeed = -12;
 }
 
 void Chopter::updateSpeed() {
   if (status == fly) {
-    vspeed -= accel;
+    speed.y -= accel;
   } else {
-    vspeed += gravity;
+    speed.y += gravity;
   }
-  if(vspeed > mxVspeed) {
-    vspeed = mxVspeed;
+  if(speed.y > mxVspeed) {
+    speed.y = mxVspeed;
   }
-  if(vspeed < mnVspeed) {
-    vspeed = mnVspeed;
+  if(speed.y < mnVspeed) {
+    speed.y = mnVspeed;
   }
 }
 
 void Chopter::updatePosition() {
-  position.x += hspeed;
-  position.y += vspeed;
+  position.x += speed.x;
+  position.y += speed.y;
 
   position.y = ((int)position.y + 480) % 480;
   position.x = (int)position.x % 672;
@@ -38,7 +37,7 @@ void Chopter::setStatus(Status status) {
 }
 
 void Chopter::invertSpeed() {
-  vspeed *= -1;
+  speed.y *= -1;
 }
 
 void Chopter::move(bool fuel) {

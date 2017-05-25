@@ -9,7 +9,7 @@ class Chopter {
   enum Status { fly, fall };
   Point<float> position;
   Point<int> size;
-  float vspeed, hspeed;
+  Point<float> speed;
   float mxVspeed, mnVspeed;
   Status status;
   void setStatus(Status status);
