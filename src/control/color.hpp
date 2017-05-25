@@ -1,0 +1,10 @@
+#define C_BLACK 0x00000000
+#define C_WHITE 0xFFFFFFFF
+#define C_RED   0xFFFF0000
+#define C_GREEN 0xFF00FF00
+#define C_BLUE  0xFF0000FF
+
+#define C_SCREEN C_BLACK
+#define C_PLAYER C_BLUE
+#define C_CEIL C_RED
+#define C_FLOOR C_GREEN
