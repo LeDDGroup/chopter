@@ -1,14 +1,16 @@
 #ifndef UTILS_HPP
 #define UTILS_HPP
 
-struct Point {
-  int x, y;
-  Point(int x = 0, int y = 0);
-  Point operator + (const Point &b) const;
+template<typename type>
+class Point {
+public:
+  type x, y;
+  Point(type x = 0, type y = 0);
+  Point<type> operator + (const Point<type> &b) const;
 };
 
 struct Rect {
-  Point position, size;
+  Point<int> position, size;
 };
 
 bool collision(const Rect &a, const Rect &b);
