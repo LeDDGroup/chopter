@@ -11,6 +11,7 @@ add_executable(chopter
   src/core/Map.cpp
   src/core/utils.cpp
   src/visual/Button.cpp
+  src/visual/Label.cpp
   src/main.cpp
   )
 
