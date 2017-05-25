@@ -12,7 +12,7 @@ void Score::increaseScore() {
 };
 
 void Score::saveScore() {
-  freopen ("src/data/score","a",stdout);
+  freopen ("score","a",stdout);
   printf ("%i\n", currentScore);
   fclose (stdout);
 };
