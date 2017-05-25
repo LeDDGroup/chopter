@@ -34,5 +34,9 @@ bool MainController::processEvent(const SDL_Event & event) {
   if (!Event::processEvent(event)) {
     return false;
   }
+  if (event.type == SDL_MOUSEBUTTONDOWN) {
+    quit = true;
+    return false;
+  }
   return true;
 }
