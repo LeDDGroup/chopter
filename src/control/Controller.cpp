@@ -4,3 +4,6 @@
 Controller::Controller(Logic * logic)
   : logic(logic) {
 }
+
+void Controller::init() {
+}
