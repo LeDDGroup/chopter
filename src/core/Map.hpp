@@ -18,8 +18,6 @@ class Map {
   int prev;
   int minSize;
   int maxSize;
-  int minHeight;
-  int maxHeight;
   Hole field[maxWidth];
   int randomValue(int value);
   int normalizeValue(int value, int minValue, int maxValue);
