@@ -5,7 +5,7 @@ const float Chopter::gravity = 1.3;
 
 Chopter::Chopter(const Point<float> &position, const Point<int> &size)
   : position(position), size(size) {
-  speed = Point<float>(5, 0);
+  speed = Point<float>(10, 0);
   this->mxVspeed = 7;
   this->mnVspeed = -12;
 }
