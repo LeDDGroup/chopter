@@ -1,13 +1,13 @@
 #include "Chopter.hpp"
 
-const float Chopter::accel = 0.8;
-const float Chopter::gravity = 1.3;
+const float Chopter::accel = 1.3;
+const float Chopter::gravity = 2.0;
 
 Chopter::Chopter(const Point<float> &position, const Point<int> &size)
   : position(position), size(size) {
   speed = Point<float>(10, 0);
-  this->mxVspeed = 7;
-  this->mnVspeed = -12;
+  this->mxVspeed = 9;
+  this->mnVspeed = -19;
 }
 
 void Chopter::updateSpeed() {
