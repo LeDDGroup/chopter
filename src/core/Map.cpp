@@ -16,7 +16,7 @@ void Map::generateMap() {
   field[0].height = height/3;
   for(int i = 1; i < length; i++) {
     field[i].size = normalizeValue(randomValue(field[i-1].size), minSize, maxSize);
-    field[i].height = normalizeValue(randomValue(field[i-1].height), 0, height - field[i].size - 3);
+    field[i].height = normalizeValue(randomValue(field[i-1].height), 0, height - field[i].size - 2);
   }
 }
 
@@ -40,7 +40,7 @@ void Map::updateBlocks(int position) {
     int updatePosition = (position + updateDistance + length) % length;
     int previousToUpdate = (updatePosition - 1 + length) % length;
     field[updatePosition].size = normalizeValue(randomValue(field[previousToUpdate].size), minSize, maxSize);
-    field[updatePosition].height = normalizeValue(randomValue(field[previousToUpdate].height), 0, height - field[previousToUpdate].size - 2);
+    field[updatePosition].height = normalizeValue(randomValue(field[previousToUpdate].height), 0, height - field[updatePosition].size - 2);
     prev = position;
   }
 }
