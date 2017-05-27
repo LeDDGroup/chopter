@@ -1,5 +1,11 @@
 project(chopter)
 
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
+
+include(FindSDL2PP.cmake)
+include_directories(${SDL2PP_INCLUDE_DIRS})
+link_libraries(${SDL2PP_LIBRARIES})
+
 add_executable(chopter
   src/control/Controller.cpp
   src/control/Event.cpp
@@ -14,5 +20,3 @@ add_executable(chopter
   src/visual/Label.cpp
   src/main.cpp
   )
-
-target_link_libraries(chopter SDL2 SDL2_ttf)
