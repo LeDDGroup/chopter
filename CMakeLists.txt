@@ -22,6 +22,7 @@ add_executable(chopter
   src/visual/Button.cpp
   src/visual/Label.cpp
   src/visual/Text.cpp
+  src/visual/TextButton.cpp
   src/visual/utils.cpp
   src/main.cpp
   )
