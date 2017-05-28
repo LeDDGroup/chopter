@@ -44,6 +44,7 @@ void Game::onStep(bool fuel) {
   moveChopter(fuel);
   if (!checkColition()) finish();
   updateBlocks();
+  score++;
 }
 
 void Game::finish() {
