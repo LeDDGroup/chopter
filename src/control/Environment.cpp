@@ -17,7 +17,8 @@ Environment::Environment()
            default_window_position_x, default_window_position_y,
            default_window_size_x, default_window_size_y,
            default_window_state),
-    surface(SDL_GetWindowSurface(window.Get())) {
+    surface(SDL_GetWindowSurface(window.Get())),
+    renderer(window, -1, SDL_RENDERER_ACCELERATED) {
 }
 
 Environment::~Environment() {

@@ -16,6 +16,7 @@ public:
   SDL2pp::SDLTTF ttf;
   SDL2pp::Font font;
   SDL2pp::Window window;
+  SDL2pp::Renderer renderer;
   SDL_Surface * surface;
   Environment();
   ~Environment();
