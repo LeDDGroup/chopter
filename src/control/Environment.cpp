@@ -2,19 +2,23 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_ttf.h>
 
+const char * Environment::default_window_title = "Chopter";
+const int Environment::default_window_position_x = SDL_WINDOWPOS_UNDEFINED;
+const int Environment::default_window_position_y = SDL_WINDOWPOS_UNDEFINED;
+const int Environment::default_window_size_x = 640;
+const int Environment::default_window_size_y = 480;
+const int Environment::default_window_state = SDL_WINDOW_SHOWN;
+
 Environment::Environment()
   : sdl(SDL_INIT_VIDEO),
     ttf(),
-    font("resource/Cantarell-Regular.otf", 28) {
-  window = SDL_CreateWindow("Chopter",
-                            SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
-                            640, 480,
-                            SDL_WINDOW_SHOWN);
-  surface = SDL_GetWindowSurface(window);
+    font("resource/Cantarell-Regular.otf", 28),
+    window(default_window_title,
+           default_window_position_x, default_window_position_y,
+           default_window_size_x, default_window_size_y,
+           default_window_state),
+    surface(SDL_GetWindowSurface(window.Get())) {
 }
 
 Environment::~Environment() {
-  if (window) {
-    SDL_DestroyWindow(window);
-  }
 }

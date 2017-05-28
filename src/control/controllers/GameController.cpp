@@ -100,5 +100,5 @@ void GameController::draw() {
   clearScreen();
   drawMap(map);
   drawChopter(chopter);
-  SDL_UpdateWindowSurface(environment.window);
+  SDL_UpdateWindowSurface(environment.window.Get());
 }
