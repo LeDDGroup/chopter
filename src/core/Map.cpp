@@ -6,19 +6,18 @@ Map::Map(int height, int length, int updateDistance) {
   this->updateDistance = updateDistance;
   this->length = length;
   this->minSize = 4;
-  this->maxSize = 9;
-  this->minHeight = 1;
-  this->maxHeight = height - maxSize - 1;
+  this->maxSize = height - 2;
   generateMap();
   prev = 0;
 }
 
 void Map::generateMap() {
-  field[0].size = maxSize;
-  field[0].height = height/3;
-  for(int i = 1; i < length; i++) {
-    field[i].size = normalizeValue(randomValue(field[i-1].size), minSize, maxSize);
-    field[i].height = normalizeValue(randomValue(field[i-1].height), minHeight, maxHeight);
+  const int startValue = length + updateDistance - 1;
+  field[startValue].size = maxSize;
+  field[startValue].height = height / 3;
+  prev = startValue;
+  for(int i = 0; i < length; i++) {
+    updateBlocks(i);
   }
 }
 
@@ -42,7 +41,7 @@ void Map::updateBlocks(int position) {
     int updatePosition = (position + updateDistance + length) % length;
     int previousToUpdate = (updatePosition - 1 + length) % length;
     field[updatePosition].size = normalizeValue(randomValue(field[previousToUpdate].size), minSize, maxSize);
-    field[updatePosition].height = normalizeValue(randomValue(field[previousToUpdate].height), minHeight, maxHeight);
+    field[updatePosition].height = normalizeValue(randomValue(field[previousToUpdate].height), 0, height - field[updatePosition].size - 2);
     prev = position;
   }
 }

@@ -1,7 +1,10 @@
-#include "Logic.hpp"
+#include "../../core/Point.hpp"
+#include "../Environment.hpp"
+#include "../Logic.hpp"
+#include "../color.hpp"
 #include "MainController.hpp"
-#include "color.hpp"
-#include "../core/Point.hpp"
+
+extern Environment environment;
 
 #define C_SCREEN C_BLACK
 
@@ -10,9 +13,13 @@ MainController::MainController(Logic * logic)
   btnPlay.rect.x = 256; btnPlay.rect.y = 64;
   btnPlay.rect.w = 128; btnPlay.rect.h = 48;
   btnPlay.color = C_BLUE;
+  labelPlay.setText("Play");
+  labelPlay.rect = btnPlay.rect;
   btnQuit.rect.x = 256; btnQuit.rect.y = 480-64-48;
   btnQuit.rect.w = 128; btnQuit.rect.h = 48;
   btnQuit.color = C_RED;
+  labelQuit.setText("Quit");
+  labelQuit.rect = btnQuit.rect;
 };
 
 void MainController::loop() {
@@ -25,10 +32,12 @@ static SDL_Rect rect;
 void MainController::draw() {
   rect.x = 0; rect.y = 0;
   rect.w = 640; rect.h = 480;
-  SDL_FillRect(logic->getScreenSurface(), &rect, C_SCREEN);
-  btnPlay.draw(logic->getScreenSurface());
-  btnQuit.draw(logic->getScreenSurface());
-  SDL_UpdateWindowSurface(logic->getWindow());
+  SDL_FillRect(environment.surface, &rect, C_SCREEN);
+  btnPlay.draw();
+  btnQuit.draw();
+  labelPlay.draw();
+  labelQuit.draw();
+  environment.renderer.Present();
 }
 
 bool MainController::processEvent(const SDL_Event & event) {

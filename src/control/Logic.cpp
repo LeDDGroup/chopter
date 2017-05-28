@@ -1,20 +1,18 @@
-#include "Logic.hpp"
+#include "../visual/Button.hpp"
+#include "../visual/Label.hpp"
 #include "Controller.hpp"
-#include "MainController.hpp"
-#include "GameController.hpp"
+#include "Environment.hpp"
+#include "Logic.hpp"
+#include "controllers/GameController.hpp"
+#include "controllers/MainController.hpp"
+
+extern Environment environment;
 
 void Logic::init() {
-  SDL_Init(SDL_INIT_VIDEO);
-  window = SDL_CreateWindow("Chopter",
-                            SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
-                            640, 480,
-                            SDL_WINDOW_SHOWN);
-  screenSurface = SDL_GetWindowSurface(window);
   state = MainMenu;
 }
 
 void Logic::quit() {
-  SDL_Quit();
 }
 
 void Logic::manage(Controller &controller) {

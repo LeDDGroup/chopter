@@ -1,10 +1,10 @@
 #ifndef GAMECONTROLLER_HPP
 #define GAMECONTROLLER_HPP
 
-#include "Logic.hpp"
-#include "Controller.hpp"
-#include "Event.hpp"
-#include "../core/Game.hpp"
+#include "../../core/Game.hpp"
+#include "../Controller.hpp"
+#include "../Event.hpp"
+#include "../Logic.hpp"
 
 class GameController: public Controller, private Event {
   Game game;

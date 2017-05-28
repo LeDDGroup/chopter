@@ -1,5 +1,7 @@
 #include "control/Logic.hpp"
-#include "control/GameController.hpp"
+#include "control/Environment.hpp"
+
+Environment environment;
 
 int main() {
   Logic logic;

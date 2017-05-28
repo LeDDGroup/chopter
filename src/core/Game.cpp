@@ -1,8 +1,8 @@
 #include "Game.hpp"
 #include "Map.hpp"
 
-Game::Game() {
-  blockWidth = 32;
+Game::Game()
+  : done(false), blockWidth(32) {
 }
 
 void Game::moveChopter(bool fuel) {
