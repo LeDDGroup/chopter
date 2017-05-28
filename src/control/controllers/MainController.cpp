@@ -24,16 +24,19 @@ MainController::MainController(Logic * logic)
   btnPlay.color = C_BLUE;
   labelPlay.setText("Play");
   labelPlay.rect = btnPlay.rect;
+  labelPlay.halign = Label::Center; labelPlay.valign = Label::Middle;
   btnQuit.rect = SDL2pp::Rect(centerX, roomSize.y - 2 * componentHeight,
                               componentWidth, componentHeight);
   btnQuit.color = C_RED;
   labelQuit.setText("Quit");
   labelQuit.rect = btnQuit.rect;
+  labelQuit.halign = Label::Center; labelQuit.valign = Label::Middle;
   int score = readScore();
   sprintf(highScoreText, "HighScore: %i", score);
   labelScore.setText(highScoreText);
   labelScore.rect = SDL2pp::Rect(centerX, 0,
                                  componentWidth, componentHeight);
+  labelScore.halign = Label::Center; labelScore.valign = Label::Top;
 };
 
 void MainController::loop() {
