@@ -1,5 +1,8 @@
 #include "GameController.hpp"
 #include "../color.hpp"
+#include "../Environment.hpp"
+
+extern Environment environment;
 
 GameController::GameController(Logic * logic)
   : Controller(logic), hasPressedKey(false), started(false) {};
@@ -56,13 +59,13 @@ const int height = 15;
 void GameController::clearScreen() {
   rect.x = 0; rect.y = 0;
   rect.w = 640; rect.h = 480;
-  SDL_FillRect(logic->getScreenSurface(), &rect, C_SCREEN);
+  SDL_FillRect(environment.surface, &rect, C_SCREEN);
 }
 
 void GameController::drawChopter(const Chopter & chopter) {
   rect.x = chopter.getX() - xoffset; rect.y = chopter.getY();
   rect.w = chopter.getWidth(); rect.h = chopter.getHeight();
-  SDL_FillRect(logic->getScreenSurface(), &rect, C_PLAYER);
+  SDL_FillRect(environment.surface, &rect, C_PLAYER);
 }
 
 void GameController::drawColumn(int x, const Hole &hole) {
@@ -71,11 +74,11 @@ void GameController::drawColumn(int x, const Hole &hole) {
   const int y2 = y1 + hole.size;
   for (int j = 0; j <= y1; j++) {
     rect.y = j*size;
-    SDL_FillRect(logic->getScreenSurface(), &rect, C_CEIL);
+    SDL_FillRect(environment.surface, &rect, C_CEIL);
   }
   for (int j = y2+1; j < height; j++) {
     rect.y = j*size;
-    SDL_FillRect(logic->getScreenSurface(), &rect, C_FLOOR);
+    SDL_FillRect(environment.surface, &rect, C_FLOOR);
   }
 }
 
@@ -97,5 +100,5 @@ void GameController::draw() {
   clearScreen();
   drawMap(map);
   drawChopter(chopter);
-  SDL_UpdateWindowSurface(logic->getWindow());
+  SDL_UpdateWindowSurface(environment.window);
 }

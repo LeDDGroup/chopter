@@ -12,11 +12,11 @@ bool Logic::hasError;
 
 void Logic::init() {
   hasError = false;
-  window = SDL_CreateWindow("Chopter",
-                            SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
-                            640, 480,
-                            SDL_WINDOW_SHOWN);
-  screenSurface = SDL_GetWindowSurface(window);
+  environment.window = SDL_CreateWindow("Chopter",
+                                        SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
+                                        640, 480,
+                                        SDL_WINDOW_SHOWN);
+  environment.surface = SDL_GetWindowSurface(environment.window);
   state = MainMenu;
 }
 
