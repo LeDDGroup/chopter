@@ -49,6 +49,12 @@ void Logic::runMainMenuController() {
 void Logic::runGameController() {
   GameController controller(this);
   manage(controller);
+  int score = controller.getScore();
+  int highScore = readScore();
+  if (score > highScore) {
+    writeScore(score);
+  }
+}
 
 void Logic::writeScore(int score) {
   std::ofstream fout("score.txt");
