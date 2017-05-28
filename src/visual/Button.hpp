@@ -10,7 +10,7 @@ class Button {
 public:
   SDL_Rect rect;
   Uint32 color;
-  void draw(SDL_Surface * surface);
+  void draw();
   bool checkClick(const Point<int> &mousePosition);
 };
 

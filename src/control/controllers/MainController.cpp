@@ -33,8 +33,8 @@ void MainController::draw() {
   rect.x = 0; rect.y = 0;
   rect.w = 640; rect.h = 480;
   SDL_FillRect(environment.surface, &rect, C_SCREEN);
-  btnPlay.draw(environment.surface);
-  btnQuit.draw(environment.surface);
+  btnPlay.draw();
+  btnQuit.draw();
   labelPlay.draw();
   labelQuit.draw();
   SDL_UpdateWindowSurface(environment.window.Get());

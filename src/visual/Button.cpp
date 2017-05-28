@@ -2,9 +2,13 @@
 #include "Button.hpp"
 #include "../control/color.hpp"
 #include "../control/Logic.hpp"
+#include "../control/Environment.hpp"
 
-void Button::draw(SDL_Surface * screen) {
-  SDL_FillRect(screen, &rect, color);
+extern Environment environment;
+
+void Button::draw() {
+  environment.renderer.SetDrawColor(0, 0, 255, 255);
+  environment.renderer.FillRect(SDL2pp::Rect(rect));
 }
 
 bool Button::checkClick(const Point<int> &mousePosition) {
