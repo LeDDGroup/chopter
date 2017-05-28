@@ -2,16 +2,18 @@
 #define MAINCONTROLLER_HPP
 
 #include <SDL2/SDL_events.h>
-#include "../../visual/Button.hpp"
 #include "../../visual/Label.hpp"
+#include "../../visual/TextButton.hpp"
 #include "../Controller.hpp"
 #include "../Event.hpp"
 
 class MainController: public Controller, private Event {
-  Button btnPlay;
-  Label labelPlay;
-  Button btnQuit;
-  Label labelQuit;
+  const int componentWidth;
+  const int componentHeight;
+  const SDL2pp::Point roomSize;
+  const int centerX;
+  TextButton btnPlay;
+  TextButton btnQuit;
   Label labelScore;
   void draw();
   bool processEvent(const SDL_Event & event);

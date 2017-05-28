@@ -17,34 +17,34 @@ const int height = 15;
 
 void GameController::clearScreen() {
   Button sprite;
-  sprite.color = C_SCREEN;
-  sprite.rect.x = 0; sprite.rect.y = 0;
-  sprite.rect.w = environment.window.GetWidth(); sprite.rect.h = environment.window.GetHeight();
+  sprite.setColor(C_SCREEN);
+  sprite = SDL2pp::Rect(SDL2pp::Point(0, 0),
+                        environment.window.GetSize());
   sprite.draw();
 }
 
 void GameController::drawChopter(const Chopter & chopter) {
   Button sprite;
-  sprite.color = C_PLAYER;
-  sprite.rect.x = chopter.getX() - xoffset; sprite.rect.y = chopter.getY();
-  sprite.rect.w = chopter.getWidth(); sprite.rect.h = chopter.getHeight();
+  sprite.setColor(C_PLAYER);
+  sprite = SDL2pp::Rect(chopter.getX() - xoffset, chopter.getY(),
+                        chopter.getWidth(), chopter.getHeight());
   sprite.draw();
 }
 
 void GameController::drawColumn(int x, const Hole &hole) {
   Button sprite;
-  sprite.rect.w = sprite.rect.h = size;
-  sprite.rect.x = x;
+  sprite.w = sprite.h = size;
+  sprite.x = x;
   const int y1 = hole.height;
   const int y2 = y1 + hole.size;
+  sprite.setColor(C_CEIL);
   for (int j = 0; j <= y1; j++) {
-    sprite.rect.y = j*size;
-    sprite.color = C_CEIL;
+    sprite.y = j*size;
     sprite.draw();
   }
+  sprite.setColor(C_FLOOR);
   for (int j = y2+1; j < height; j++) {
-    sprite.rect.y = j*size;
-    sprite.color = C_FLOOR;
+    sprite.y = j*size;
     sprite.draw();
   }
 }
@@ -63,9 +63,10 @@ void GameController::drawScore() {
   Label label;
   sprintf(scoreText, "Score: %i", getScore());
   label.setText(scoreText);
-  label.rect = SDL2pp::Rect(0, 0,
-                            128, 64);
-  label.halign = Label::Left; label.valign = Label::Top;
+  label.setRect(SDL2pp::Rect(0, 0,
+                             128, 64));
+  label.setHAlign(Left);
+  label.setVAlign(Top);
   label.draw();
 }
 

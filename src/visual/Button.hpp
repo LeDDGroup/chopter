@@ -4,14 +4,21 @@
 #include <SDL2pp/Rect.hh>
 #include "../core/Point.hpp"
 
-class Button {
-public:
-  Button();
+class Button: public SDL2pp::Rect {
   bool selected;
-  SDL2pp::Rect rect;
   Uint32 color;
+public:
+  Button(const SDL2pp::Rect &other = SDL2pp::Rect(), const Uint32 color = 0);
   void draw();
   bool checkClick(const Point<int> &mousePosition);
+  Uint32 getColor() const { return color; };
+  void setColor(Uint32 other) { color = other; };
+  void select() { selected = true; }
+  void unselect() { selected = false; }
+  SDL2pp::Rect operator = (const SDL2pp::Rect & other) {
+    x = other.x; y = other.y;
+    w = other.w; h = other.h;
+  }
 };
 
 #endif
