@@ -5,6 +5,7 @@
 #include "Logic.hpp"
 #include "controllers/GameController.hpp"
 #include "controllers/MainController.hpp"
+#include <fstream>
 
 extern Environment environment;
 
@@ -48,4 +49,15 @@ void Logic::runMainMenuController() {
 void Logic::runGameController() {
   GameController controller(this);
   manage(controller);
+
+void Logic::writeScore(int score) {
+  std::ofstream fout("score.txt");
+  fout << score << std::endl;
+}
+
+int Logic::readScore() {
+  std::ifstream fin("score.txt");
+  int score;
+  fin >> score;
+  return score;
 }
