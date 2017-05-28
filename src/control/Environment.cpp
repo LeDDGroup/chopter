@@ -3,8 +3,7 @@
 #include <SDL2/SDL_ttf.h>
 
 Environment::Environment()
-  : sdl(SDL_INIT_VIDEO) {
-  TTF_Init();
+  : sdl(SDL_INIT_VIDEO), ttf() {
   font = TTF_OpenFont("resource/Cantarell-Regular.otf", 28);
   window = SDL_CreateWindow("Chopter",
                             SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
@@ -18,5 +17,4 @@ Environment::~Environment() {
     SDL_DestroyWindow(window);
   }
   TTF_CloseFont(font);
-  TTF_Quit();
 }
