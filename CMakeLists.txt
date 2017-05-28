@@ -14,6 +14,7 @@ add_executable(chopter
   src/control/controllers/GameController.cpp
   src/control/controllers/GameController_Draw.cpp
   src/control/controllers/MainController.cpp
+  src/control/score.cpp
   src/core/Chopter.cpp
   src/core/Game.cpp
   src/core/Map.cpp

@@ -12,8 +12,6 @@ private:
   void runMainMenuController();
   void runGameController();
   State state;
-  void writeScore(int);
-  int readScore();
 public:
   void init();
   void run();

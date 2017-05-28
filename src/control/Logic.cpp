@@ -5,7 +5,7 @@
 #include "Logic.hpp"
 #include "controllers/GameController.hpp"
 #include "controllers/MainController.hpp"
-#include <fstream>
+#include "score.hpp"
 
 extern Environment environment;
 
@@ -54,16 +54,4 @@ void Logic::runGameController() {
   if (score > highScore) {
     writeScore(score);
   }
-}
-
-void Logic::writeScore(int score) {
-  std::ofstream fout("score.txt");
-  fout << score << std::endl;
-}
-
-int Logic::readScore() {
-  std::ifstream fin("score.txt");
-  int score;
-  fin >> score;
-  return score;
 }
