@@ -20,6 +20,7 @@ public:
   GameController(Logic * logic);
   void draw();
   void loop();
+  int getScore() const { return game.getScore(); };
 };
 
 
