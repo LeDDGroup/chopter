@@ -8,10 +8,7 @@
 
 extern Environment environment;
 
-bool Logic::hasError;
-
 void Logic::init() {
-  hasError = false;
   state = MainMenu;
 }
 
@@ -28,9 +25,6 @@ void Logic::nextState(State signal) {
 }
 
 void Logic::run() {
-  if (hasError) {
-    nextState(Quit);
-  }
   while(state != Quit) {
     switch (state) {
     case MainMenu:
@@ -43,10 +37,6 @@ void Logic::run() {
       state = Quit;
       break;
     }
-  }
-  if (hasError) {
-    printf("SDL Error: %s\n", SDL_GetError());
-    printf("SDL_ttf Error: %s\n", TTF_GetError());
   }
 }
 
