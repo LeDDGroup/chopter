@@ -25,18 +25,18 @@ MainController::MainController(Logic * logic)
     btnQuit(SDL2pp::Rect(centerX, roomSize.y - 2 * componentHeight,
                          componentWidth, componentHeight), C_RED) {
   labelPlay.setRect(btnPlay);
-  labelPlay.setHAlign(Label::Center);
-  labelPlay.setVAlign(Label::Middle);
+  labelPlay.setHAlign(Center);
+  labelPlay.setVAlign(Middle);
   labelQuit.setRect(btnQuit);
-  labelQuit.setHAlign(Label::Center);
-  labelQuit.setVAlign(Label::Middle);
+  labelQuit.setHAlign(Center);
+  labelQuit.setVAlign(Middle);
   int score = readScore();
   sprintf(highScoreText, "HighScore: %i", score);
   labelScore.setText(highScoreText);
   labelScore.setRect(SDL2pp::Rect(centerX, 0,
                                   componentWidth, componentHeight));
-  labelScore.setHAlign(Label::Center);
-  labelScore.setVAlign(Label::Top);
+  labelScore.setHAlign(Center);
+  labelScore.setVAlign(Top);
 };
 
 void MainController::loop() {

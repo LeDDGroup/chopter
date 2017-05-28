@@ -5,14 +5,11 @@
 #include "../core/Point.hpp"
 #include <SDL2pp/Texture.hh>
 #include <SDL2/SDL_rect.h>
+#include "utils.hpp"
 
 class Label {
-public:
-  enum VAlign { Top, Middle, Bottom };
-  enum HAlign { Left, Center, Right };
 private:
   Text textComponent;
-  SDL2pp::Rect getDrawRect();
   SDL2pp::Rect rect;
   VAlign valign;
   HAlign halign;

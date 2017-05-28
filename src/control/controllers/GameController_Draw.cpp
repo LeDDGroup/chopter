@@ -65,8 +65,8 @@ void GameController::drawScore() {
   label.setText(scoreText);
   label.setRect(SDL2pp::Rect(0, 0,
                              128, 64));
-  label.setHAlign(Label::Left);
-  label.setVAlign(Label::Top);
+  label.setHAlign(Left);
+  label.setVAlign(Top);
   label.draw();
 }
 
