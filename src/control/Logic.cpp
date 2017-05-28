@@ -1,10 +1,10 @@
-#include "Logic.hpp"
-#include "Controller.hpp"
-#include "controllers/MainController.hpp"
-#include "controllers/GameController.hpp"
 #include "../visual/Button.hpp"
 #include "../visual/Label.hpp"
+#include "Controller.hpp"
 #include "Environment.hpp"
+#include "Logic.hpp"
+#include "controllers/GameController.hpp"
+#include "controllers/MainController.hpp"
 
 extern Environment environment;
 
