@@ -15,7 +15,7 @@ extern Environment environment;
 
 MainController::MainController(Logic * logic)
   : Controller(logic),
-    componentWidth(128), componentHeight(48),
+    componentWidth(256), componentHeight(48),
     roomSize(environment.window.GetSize()),
     centerX((roomSize.x - componentWidth) / 2),
     btnPlay("Play", SDL2pp::Rect(centerX, componentHeight,
