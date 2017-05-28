@@ -8,10 +8,15 @@
 class Label {
   const char * text;
   SDL2pp::Texture texture;
+  SDL2pp::Rect getDrawRect();
 public:
+  enum VAlign { Top, Middle, Bottom };
+  enum HAlign { Left, Center, Right };
   Label();
   ~Label();
   SDL2pp::Rect rect;
+  VAlign valign;
+  HAlign halign;
   void draw();
   void setText(const char * text);
 };
