@@ -17,8 +17,7 @@ private:
   VAlign valign;
   HAlign halign;
 public:
-  Label();
-  ~Label();
+  Label(const char * str = "Text");
   void draw();
   void setText(const char * text);
   const SDL2pp::Rect & getRect() const { return rect; };

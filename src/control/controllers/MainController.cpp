@@ -14,7 +14,9 @@ extern Environment environment;
 #define C_SCREEN C_BLACK
 
 MainController::MainController(Logic * logic)
-  : Controller(logic) {
+  : Controller(logic),
+    labelPlay("Play"),
+    labelQuit("Quit") {
   const int componentWidth = 128;
   const int componentHeight = 48;
   const SDL2pp::Point roomSize = environment.window.GetSize();
@@ -22,14 +24,12 @@ MainController::MainController(Logic * logic)
   btnPlay = SDL2pp::Rect(centerX, componentHeight,
                          componentWidth, componentHeight);
   btnPlay.setColor(C_BLUE);
-  labelPlay.setText("Play");
   labelPlay.setRect(btnPlay);
   labelPlay.setHAlign(Label::Center);
   labelPlay.setVAlign(Label::Middle);
   btnQuit = SDL2pp::Rect(centerX, roomSize.y - 2 * componentHeight,
                          componentWidth, componentHeight);
   btnQuit.setColor(C_RED);
-  labelQuit.setText("Quit");
   labelQuit.setRect(btnQuit);
   labelQuit.setHAlign(Label::Center);
   labelQuit.setVAlign(Label::Middle);

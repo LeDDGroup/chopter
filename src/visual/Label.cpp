@@ -7,14 +7,11 @@ using namespace SDL2pp;
 
 extern Environment environment;
 
-Label::Label()
-  : text("Default"),
+Label::Label(const char * str)
+  : text(str),
     texture(environment.renderer,
             environment.font.RenderText_Solid(text, SDL_Color{255, 255, 255, 255})),
     valign(Top), halign(Left) {
-}
-
-Label::~Label() {
 }
 
 void Label::setText(const char * str) {
