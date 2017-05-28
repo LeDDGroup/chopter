@@ -2,8 +2,9 @@
 #include "Label.hpp"
 #include "../control/color.hpp"
 #include "../control/Logic.hpp"
+#include "../control/Environment.hpp"
 
-TTF_Font * Label::font = 0;
+extern Environment environment;
 
 Label::Label()
   : text(), surface(0) {
@@ -26,7 +27,7 @@ void Label::setText(const char * str) {
   color.r = 255; color.g = 255;
   color.b = 255; color.a = 255;
   clearSurface();
-  surface = TTF_RenderText_Solid(font, text, color);
+  surface = TTF_RenderText_Solid(environment.font, text, color);
   if (surface == 0) {
     Logic::throwError();
     return;
