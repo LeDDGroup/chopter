@@ -3,39 +3,25 @@
 #include "../control/color.hpp"
 #include "../control/Logic.hpp"
 #include "../control/Environment.hpp"
+using namespace SDL2pp;
 
 extern Environment environment;
 
 Label::Label()
-  : text(), surface(0) {
+  : text("Default"),
+    texture(environment.renderer,
+            environment.font.RenderText_Solid(text, SDL_Color{255, 255, 255, 255})) {
 }
 
 Label::~Label() {
-  clearSurface();
-}
-
-void Label::clearSurface() {
-  if (surface) {
-    SDL_FreeSurface(surface);
-    surface = 0;
-  }
 }
 
 void Label::setText(const char * str) {
   text = str;
-  SDL_Color color;
-  color.r = 255; color.g = 255;
-  color.b = 255; color.a = 255;
-  clearSurface();
-  surface = TTF_RenderText_Solid(environment.font.Get(), text, color);
-  fontrect.x = 0; fontrect.y = 0;
-  fontrect.w = surface->w; fontrect.h = surface->h;
+  texture = Texture(environment.renderer,
+                    environment.font.RenderText_Solid(text, SDL_Color{255, 255, 255, 255}));
 }
 
-void Label::draw(SDL_Surface * screen) {
-  SDL_Rect cpy = fontrect;
-  cpy.x = rect.x + (rect.w - fontrect.w) / 2;
-  cpy.y = rect.y + (rect.h - fontrect.h) / 2;
-  SDL_BlitSurface(surface, &fontrect,
-                  screen, &cpy);
+void Label::draw() {
+  environment.renderer.Copy(texture, NullOpt, Rect(rect));
 }

@@ -35,9 +35,10 @@ void MainController::draw() {
   SDL_FillRect(environment.surface, &rect, C_SCREEN);
   btnPlay.draw(environment.surface);
   btnQuit.draw(environment.surface);
-  labelPlay.draw(environment.surface);
-  labelQuit.draw(environment.surface);
+  labelPlay.draw();
+  labelQuit.draw();
   SDL_UpdateWindowSurface(environment.window.Get());
+  environment.renderer.Present();
 }
 
 bool MainController::processEvent(const SDL_Event & event) {
