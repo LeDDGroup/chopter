@@ -8,6 +8,7 @@
 
 class Button {
 public:
+  bool selected;
   SDL_Rect rect;
   Uint32 color;
   void draw();
