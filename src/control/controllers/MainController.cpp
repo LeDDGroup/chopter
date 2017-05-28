@@ -1,7 +1,10 @@
+#include "../../core/Point.hpp"
+#include "../Environment.hpp"
 #include "../Logic.hpp"
 #include "../color.hpp"
-#include "../../core/Point.hpp"
 #include "MainController.hpp"
+
+extern Environment environment;
 
 #define C_SCREEN C_BLACK
 
@@ -29,12 +32,12 @@ static SDL_Rect rect;
 void MainController::draw() {
   rect.x = 0; rect.y = 0;
   rect.w = 640; rect.h = 480;
-  SDL_FillRect(logic->getScreenSurface(), &rect, C_SCREEN);
-  btnPlay.draw(logic->getScreenSurface());
-  btnQuit.draw(logic->getScreenSurface());
-  labelPlay.draw(logic->getScreenSurface());
-  labelQuit.draw(logic->getScreenSurface());
-  SDL_UpdateWindowSurface(logic->getWindow());
+  SDL_FillRect(environment.surface, &rect, C_SCREEN);
+  btnPlay.draw();
+  btnQuit.draw();
+  labelPlay.draw();
+  labelQuit.draw();
+  environment.renderer.Present();
 }
 
 bool MainController::processEvent(const SDL_Event & event) {

@@ -1,46 +1,18 @@
-#include <cstdio>
-#include <SDL2/SDL.h>
-#include <SDL2/SDL_ttf.h>
-#include "Logic.hpp"
-#include "Controller.hpp"
-#include "controllers/MainController.hpp"
-#include "controllers/GameController.hpp"
 #include "../visual/Button.hpp"
 #include "../visual/Label.hpp"
+#include "Controller.hpp"
+#include "Environment.hpp"
+#include "Logic.hpp"
+#include "controllers/GameController.hpp"
+#include "controllers/MainController.hpp"
 
-bool Logic::hasError;
+extern Environment environment;
 
 void Logic::init() {
-  hasError = false;
-  if (SDL_Init(SDL_INIT_VIDEO) == -1) {
-    throwError();
-    return;
-  }
-  if (TTF_Init() == -1) {
-    throwError();
-    return;
-  }
-  window = SDL_CreateWindow("Chopter",
-                            SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
-                            640, 480,
-                            SDL_WINDOW_SHOWN);
-  if (window == 0) {
-    throwError();
-    return;
-  }
-  screenSurface = SDL_GetWindowSurface(window);
   state = MainMenu;
-  Label::font = TTF_OpenFont("resource/Cantarell-Regular.otf", 28 );
-  if (Label::font == 0) {
-    throwError();
-    return;
-  }
 }
 
 void Logic::quit() {
-  TTF_CloseFont(Label::font);
-  TTF_Quit();
-  SDL_Quit();
 }
 
 void Logic::manage(Controller &controller) {
@@ -53,9 +25,6 @@ void Logic::nextState(State signal) {
 }
 
 void Logic::run() {
-  if (hasError) {
-    nextState(Quit);
-  }
   while(state != Quit) {
     switch (state) {
     case MainMenu:
@@ -68,10 +37,6 @@ void Logic::run() {
       state = Quit;
       break;
     }
-  }
-  if (hasError) {
-    printf("SDL Error: %s\n", SDL_GetError());
-    printf("SDL_ttf Error: %s\n", TTF_GetError());
   }
 }
 
