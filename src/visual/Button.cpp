@@ -6,8 +6,10 @@
 
 extern Environment environment;
 
-Button::Button()
-  : selected(false) {
+Button::Button(const SDL2pp::Rect &other, const Uint32 color)
+  : selected(false),
+    color(color),
+    SDL2pp::Rect(other) {
 }
 
 void Button::draw() {

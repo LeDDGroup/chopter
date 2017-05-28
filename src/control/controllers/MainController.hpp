@@ -8,6 +8,10 @@
 #include "../Event.hpp"
 
 class MainController: public Controller, private Event {
+  const int componentWidth;
+  const int componentHeight;
+  const SDL2pp::Point roomSize;
+  const int centerX;
   Button btnPlay;
   Label labelPlay;
   Button btnQuit;

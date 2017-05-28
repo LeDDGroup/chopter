@@ -16,20 +16,17 @@ extern Environment environment;
 MainController::MainController(Logic * logic)
   : Controller(logic),
     labelPlay("Play"),
-    labelQuit("Quit") {
-  const int componentWidth = 128;
-  const int componentHeight = 48;
-  const SDL2pp::Point roomSize = environment.window.GetSize();
-  const int centerX = (roomSize.x - componentWidth) / 2;
-  btnPlay = SDL2pp::Rect(centerX, componentHeight,
-                         componentWidth, componentHeight);
-  btnPlay.setColor(C_BLUE);
+    labelQuit("Quit"),
+    componentWidth(128), componentHeight(48),
+    roomSize(environment.window.GetSize()),
+    centerX((roomSize.x - componentWidth) / 2),
+    btnPlay(SDL2pp::Rect(centerX, componentHeight,
+                         componentWidth, componentHeight), C_BLUE),
+    btnQuit(SDL2pp::Rect(centerX, roomSize.y - 2 * componentHeight,
+                         componentWidth, componentHeight), C_RED) {
   labelPlay.setRect(btnPlay);
   labelPlay.setHAlign(Label::Center);
   labelPlay.setVAlign(Label::Middle);
-  btnQuit = SDL2pp::Rect(centerX, roomSize.y - 2 * componentHeight,
-                         componentWidth, componentHeight);
-  btnQuit.setColor(C_RED);
   labelQuit.setRect(btnQuit);
   labelQuit.setHAlign(Label::Center);
   labelQuit.setVAlign(Label::Middle);

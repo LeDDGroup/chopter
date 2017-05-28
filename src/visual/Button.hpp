@@ -8,7 +8,7 @@ class Button: public SDL2pp::Rect {
   bool selected;
   Uint32 color;
 public:
-  Button();
+  Button(const SDL2pp::Rect &other = SDL2pp::Rect(), const Uint32 color = 0);
   void draw();
   bool checkClick(const Point<int> &mousePosition);
   Uint32 getColor() const { return color; };
