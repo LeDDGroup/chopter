@@ -6,7 +6,11 @@ Environment::Environment() {
   SDL_Init(SDL_INIT_VIDEO);
   TTF_Init();
   font = TTF_OpenFont("resource/Cantarell-Regular.otf", 28);
-  window = 0;
+  window = SDL_CreateWindow("Chopter",
+                            SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
+                            640, 480,
+                            SDL_WINDOW_SHOWN);
+  surface = SDL_GetWindowSurface(window);
 }
 
 Environment::~Environment() {
