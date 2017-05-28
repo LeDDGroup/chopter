@@ -6,6 +6,8 @@
 #include "../score.hpp"
 #include <cstdlib>
 #include <cstdio>
+#include <SDL2pp/Rect.hh>
+#include <SDL2pp/Point.hh>
 
 extern Environment environment;
 
@@ -13,21 +15,25 @@ extern Environment environment;
 
 MainController::MainController(Logic * logic)
   : Controller(logic) {
-  btnPlay.rect.x = 256; btnPlay.rect.y = 64;
-  btnPlay.rect.w = 128; btnPlay.rect.h = 48;
+  const int componentWidth = 128;
+  const int componentHeight = 48;
+  const SDL2pp::Point roomSize = environment.window.GetSize();
+  const int centerX = (roomSize.x - componentWidth) / 2;
+  btnPlay.rect = SDL2pp::Rect(centerX, componentHeight,
+                              componentWidth, componentHeight);
   btnPlay.color = C_BLUE;
   labelPlay.setText("Play");
   labelPlay.rect = btnPlay.rect;
-  btnQuit.rect.x = 256; btnQuit.rect.y = 480-64-48;
-  btnQuit.rect.w = 128; btnQuit.rect.h = 48;
+  btnQuit.rect = SDL2pp::Rect(centerX, roomSize.y - 2 * componentHeight,
+                              componentWidth, componentHeight);
   btnQuit.color = C_RED;
   labelQuit.setText("Quit");
   labelQuit.rect = btnQuit.rect;
   int score = readScore();
   sprintf(highScoreText, "HighScore: %i", score);
   labelScore.setText(highScoreText);
-  labelScore.rect.x = 256; labelScore.rect.y = 0;
-  labelScore.rect.w = 128; labelScore.rect.h = 48;
+  labelScore.rect = SDL2pp::Rect(centerX, 0,
+                                 componentWidth, componentHeight);
 };
 
 void MainController::loop() {

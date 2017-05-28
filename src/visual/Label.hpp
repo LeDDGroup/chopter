@@ -11,7 +11,7 @@ class Label {
 public:
   Label();
   ~Label();
-  SDL_Rect rect;
+  SDL2pp::Rect rect;
   void draw();
   void setText(const char * text);
 };
