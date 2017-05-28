@@ -1,4 +1,5 @@
 #include "../../visual/Button.hpp"
+#include "../../visual/Label.hpp"
 #include "../Environment.hpp"
 #include "../color.hpp"
 #include "GameController.hpp"
@@ -58,12 +59,23 @@ void GameController::drawMap(const Map & map) {
   }
 }
 
+void GameController::drawScore() {
+  Label label;
+  sprintf(scoreText, "Score: %i", getScore());
+  label.setText(scoreText);
+  label.rect = SDL2pp::Rect(0, 0,
+                            128, 64);
+  label.halign = Label::Left; label.valign = Label::Top;
+  label.draw();
+}
+
 void GameController::draw() {
   const Chopter &chopter = game.getChopter();
   const Map &map = game.getMap();
   xoffset = chopter.getX() - 64;
   clearScreen();
   drawMap(map);
+  drawScore();
   drawChopter(chopter);
   environment.renderer.Present();
 }
