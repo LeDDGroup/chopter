@@ -15,21 +15,13 @@ extern Environment environment;
 
 MainController::MainController(Logic * logic)
   : Controller(logic),
-    labelPlay("Play"),
-    labelQuit("Quit"),
     componentWidth(128), componentHeight(48),
     roomSize(environment.window.GetSize()),
     centerX((roomSize.x - componentWidth) / 2),
-    btnPlay(SDL2pp::Rect(centerX, componentHeight,
-                         componentWidth, componentHeight), C_BLUE),
-    btnQuit(SDL2pp::Rect(centerX, roomSize.y - 2 * componentHeight,
-                         componentWidth, componentHeight), C_RED) {
-  labelPlay.setRect(btnPlay);
-  labelPlay.setHAlign(Center);
-  labelPlay.setVAlign(Middle);
-  labelQuit.setRect(btnQuit);
-  labelQuit.setHAlign(Center);
-  labelQuit.setVAlign(Middle);
+    btnPlay("Play", SDL2pp::Rect(centerX, componentHeight,
+                                 componentWidth, componentHeight), C_BLUE),
+    btnQuit("Quit", SDL2pp::Rect(centerX, roomSize.y - 2 * componentHeight,
+                                 componentWidth, componentHeight), C_RED) {
   int score = readScore();
   sprintf(highScoreText, "HighScore: %i", score);
   labelScore.setText(highScoreText);
@@ -54,8 +46,6 @@ void MainController::draw() {
   SDL_FillRect(environment.surface, &rect, C_SCREEN);
   btnPlay.draw();
   btnQuit.draw();
-  labelPlay.draw();
-  labelQuit.draw();
   labelScore.draw();
   environment.renderer.Present();
 }
