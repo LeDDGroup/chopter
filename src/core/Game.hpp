@@ -19,7 +19,6 @@ public:
   const Chopter & getChopter() const { return this->chopter; }
   const Map & getMap() const { return this->map; }
   bool hasFinished() const { return this->done; }
-  void start(); // TODO implement
 };
 
 #endif
