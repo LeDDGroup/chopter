@@ -9,6 +9,7 @@ class Game {
   Map map;
   bool done;
   int blockWidth;
+  int score;
   bool checkColition();
   void moveChopter(bool fuel);
   void updateBlocks();
@@ -19,6 +20,7 @@ public:
   const Chopter & getChopter() const { return this->chopter; }
   const Map & getMap() const { return this->map; }
   bool hasFinished() const { return this->done; }
+  int getScore() const { return this->score; }
 };
 
 #endif
