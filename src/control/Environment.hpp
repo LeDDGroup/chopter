@@ -1,3 +1,6 @@
+#ifndef ENVIRONMENT_HPP
+#define ENVIRONMENT_HPP
+
 #include <SDL2pp/SDL2pp.hh>
 #include <SDL2pp/SDLTTF.hh>
 #include <SDL2pp/Font.hh>
@@ -12,3 +15,5 @@ public:
   Environment();
   ~Environment();
 };
+
+#endif
