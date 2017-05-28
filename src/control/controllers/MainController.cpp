@@ -1,8 +1,8 @@
+#include "../../core/Point.hpp"
+#include "../Environment.hpp"
 #include "../Logic.hpp"
 #include "../color.hpp"
-#include "../../core/Point.hpp"
 #include "MainController.hpp"
-#include "../Environment.hpp"
 
 extern Environment environment;
 
@@ -37,7 +37,6 @@ void MainController::draw() {
   btnQuit.draw();
   labelPlay.draw();
   labelQuit.draw();
-  SDL_UpdateWindowSurface(environment.window.Get());
   environment.renderer.Present();
 }
 
