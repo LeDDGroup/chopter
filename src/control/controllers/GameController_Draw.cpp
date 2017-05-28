@@ -18,12 +18,13 @@ void GameController::clearScreen() {
   Button sprite;
   sprite.color = C_SCREEN;
   sprite.rect.x = 0; sprite.rect.y = 0;
-  sprite.rect.w = 640; sprite.rect.h = 480;
+  sprite.rect.w = environment.window.GetWidth(); sprite.rect.h = environment.window.GetHeight();
   sprite.draw();
 }
 
 void GameController::drawChopter(const Chopter & chopter) {
   Button sprite;
+  sprite.color = C_PLAYER;
   sprite.rect.x = chopter.getX() - xoffset; sprite.rect.y = chopter.getY();
   sprite.rect.w = chopter.getWidth(); sprite.rect.h = chopter.getHeight();
   sprite.draw();
