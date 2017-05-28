@@ -24,7 +24,9 @@ MainController::MainController(Logic * logic)
 
 void MainController::loop() {
   draw();
-  while(checkEvents()) {}
+  while(checkEvents()) {
+    draw();
+  }
 }
 
 static SDL_Rect rect;
@@ -45,7 +47,20 @@ bool MainController::processEvent(const SDL_Event & event) {
     logic->nextState(Logic::Quit);
     return false;
   }
-  if (event.type == SDL_MOUSEBUTTONDOWN) {
+  if (event.type == SDL_MOUSEMOTION) {
+    Point<int> mouse;
+    SDL_GetMouseState(&mouse.x, &mouse.y);
+    if (btnPlay.checkClick(mouse)) {
+      btnPlay.selected = true;
+    } else {
+      btnPlay.selected = false;
+    }
+    if (btnQuit.checkClick(mouse)) {
+      btnQuit.selected = true;
+    } else {
+      btnQuit.selected = false;
+    }
+  } else if (event.type == SDL_MOUSEBUTTONDOWN) {
     Point<int> mouse;
     SDL_GetMouseState(&mouse.x, &mouse.y);
     if (btnPlay.checkClick(mouse)) {
