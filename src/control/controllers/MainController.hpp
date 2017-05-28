@@ -14,6 +14,7 @@ class MainController: public Controller, private Event {
   const int centerX;
   TextButton btnPlay;
   TextButton btnQuit;
+  TextButton btnResetHighScore;
   Label labelScore;
   void draw();
   bool processEvent(const SDL_Event & event);

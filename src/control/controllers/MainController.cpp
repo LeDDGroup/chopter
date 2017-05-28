@@ -21,7 +21,9 @@ MainController::MainController(Logic * logic)
     btnPlay("Play", SDL2pp::Rect(centerX, componentHeight,
                                  componentWidth, componentHeight), C_BLUE),
     btnQuit("Quit", SDL2pp::Rect(centerX, roomSize.y - 2 * componentHeight,
-                                 componentWidth, componentHeight), C_RED) {
+                                 componentWidth, componentHeight), C_RED),
+    btnResetHighScore("Reset HighScore", SDL2pp::Rect(centerX, componentHeight * 3,
+                                                      componentWidth, componentHeight), C_GREEN) {
   int score = readScore();
   sprintf(highScoreText, "HighScore: %i", score);
   labelScore.setText(highScoreText);
@@ -46,6 +48,7 @@ void MainController::draw() {
   SDL_FillRect(environment.surface, &rect, C_SCREEN);
   btnPlay.draw();
   btnQuit.draw();
+  btnResetHighScore.draw();
   labelScore.draw();
   environment.renderer.Present();
 }
@@ -67,6 +70,11 @@ bool MainController::processEvent(const SDL_Event & event) {
       btnQuit.select();
     } else {
       btnQuit.unselect();
+    }
+    if (btnResetHighScore.checkClick(mouse)) {
+      btnResetHighScore.select();
+    } else {
+      btnResetHighScore.unselect();
     }
   } else if (event.type == SDL_MOUSEBUTTONDOWN) {
     Point<int> mouse;
