@@ -19,17 +19,17 @@ MainController::MainController(Logic * logic)
   const int componentHeight = 48;
   const SDL2pp::Point roomSize = environment.window.GetSize();
   const int centerX = (roomSize.x - componentWidth) / 2;
-  btnPlay.rect = SDL2pp::Rect(centerX, componentHeight,
-                              componentWidth, componentHeight);
-  btnPlay.color = C_BLUE;
+  btnPlay = SDL2pp::Rect(centerX, componentHeight,
+                         componentWidth, componentHeight);
+  btnPlay.setColor(C_BLUE);
   labelPlay.setText("Play");
-  labelPlay.setRect(btnPlay.rect);
+  labelPlay.setRect(btnPlay);
   labelPlay.halign = Label::Center; labelPlay.valign = Label::Middle;
-  btnQuit.rect = SDL2pp::Rect(centerX, roomSize.y - 2 * componentHeight,
-                              componentWidth, componentHeight);
-  btnQuit.color = C_RED;
+  btnQuit = SDL2pp::Rect(centerX, roomSize.y - 2 * componentHeight,
+                         componentWidth, componentHeight);
+  btnQuit.setColor(C_RED);
   labelQuit.setText("Quit");
-  labelQuit.setRect(btnQuit.rect);
+  labelQuit.setRect(btnQuit);
   labelQuit.halign = Label::Center; labelQuit.valign = Label::Middle;
   int score = readScore();
   sprintf(highScoreText, "HighScore: %i", score);
@@ -69,14 +69,14 @@ bool MainController::processEvent(const SDL_Event & event) {
     Point<int> mouse;
     SDL_GetMouseState(&mouse.x, &mouse.y);
     if (btnPlay.checkClick(mouse)) {
-      btnPlay.selected = true;
+      btnPlay.select();
     } else {
-      btnPlay.selected = false;
+      btnPlay.unselect();
     }
     if (btnQuit.checkClick(mouse)) {
-      btnQuit.selected = true;
+      btnQuit.select();
     } else {
-      btnQuit.selected = false;
+      btnQuit.unselect();
     }
   } else if (event.type == SDL_MOUSEBUTTONDOWN) {
     Point<int> mouse;
