@@ -12,8 +12,10 @@ class MainController: public Controller, private Event {
   Label labelPlay;
   Button btnQuit;
   Label labelQuit;
+  Label labelScore;
   void draw();
   bool processEvent(const SDL_Event & event);
+  char highScoreText[100];
 public:
   MainController(Logic * logic);
   void loop();

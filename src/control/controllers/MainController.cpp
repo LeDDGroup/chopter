@@ -3,6 +3,9 @@
 #include "../Logic.hpp"
 #include "../color.hpp"
 #include "MainController.hpp"
+#include "../score.hpp"
+#include <cstdlib>
+#include <cstdio>
 
 extern Environment environment;
 
@@ -20,6 +23,11 @@ MainController::MainController(Logic * logic)
   btnQuit.color = C_RED;
   labelQuit.setText("Quit");
   labelQuit.rect = btnQuit.rect;
+  int score = readScore();
+  sprintf(highScoreText, "HighScore: %i", score);
+  labelScore.setText(highScoreText);
+  labelScore.rect.x = 256; labelScore.rect.y = 0;
+  labelScore.rect.w = 128; labelScore.rect.h = 48;
 };
 
 void MainController::loop() {
@@ -39,6 +47,7 @@ void MainController::draw() {
   btnQuit.draw();
   labelPlay.draw();
   labelQuit.draw();
+  labelScore.draw();
   environment.renderer.Present();
 }
 
