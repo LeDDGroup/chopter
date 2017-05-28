@@ -12,6 +12,7 @@ add_executable(chopter
   src/control/Event.cpp
   src/control/Logic.cpp
   src/control/controllers/GameController.cpp
+  src/control/controllers/GameController_Draw.cpp
   src/control/controllers/MainController.cpp
   src/core/Chopter.cpp
   src/core/Game.cpp
