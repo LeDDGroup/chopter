@@ -63,8 +63,8 @@ void GameController::drawScore() {
   Label label;
   sprintf(scoreText, "Score: %i", getScore());
   label.setText(scoreText);
-  label.rect = SDL2pp::Rect(0, 0,
-                            128, 64);
+  label.setRect(SDL2pp::Rect(0, 0,
+                             128, 64));
   label.halign = Label::Left; label.valign = Label::Top;
   label.draw();
 }

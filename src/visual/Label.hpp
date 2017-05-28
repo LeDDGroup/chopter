@@ -9,16 +9,18 @@ class Label {
   const char * text;
   SDL2pp::Texture texture;
   SDL2pp::Rect getDrawRect();
+  SDL2pp::Rect rect;
 public:
   enum VAlign { Top, Middle, Bottom };
   enum HAlign { Left, Center, Right };
   Label();
   ~Label();
-  SDL2pp::Rect rect;
   VAlign valign;
   HAlign halign;
   void draw();
   void setText(const char * text);
+  const SDL2pp::Rect & getRect() const { return rect; };
+  void setRect(const SDL2pp::Rect & other) { rect = other; };
 };
 
 #endif
