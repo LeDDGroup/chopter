@@ -8,6 +8,7 @@ link_libraries(${SDL2PP_LIBRARIES})
 
 add_executable(chopter
   src/control/Controller.cpp
+  src/control/Environment.cpp
   src/control/Event.cpp
   src/control/Logic.cpp
   src/control/controllers/GameController.cpp
