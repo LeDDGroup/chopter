@@ -6,6 +6,10 @@
 
 extern Environment environment;
 
+Button::Button()
+  : selected(false) {
+}
+
 void Button::draw() {
   SDL_Color sdlcolor;
   sdlcolor.a = 0xFF;
