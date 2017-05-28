@@ -1,17 +1,17 @@
 #ifndef LABEL_HPP
 #define LABEL_HPP
 
+#include "Text.hpp"
+#include "../core/Point.hpp"
 #include <SDL2pp/Texture.hh>
 #include <SDL2/SDL_rect.h>
-#include "../core/Point.hpp"
 
 class Label {
 public:
   enum VAlign { Top, Middle, Bottom };
   enum HAlign { Left, Center, Right };
 private:
-  const char * text;
-  SDL2pp::Texture texture;
+  Text textComponent;
   SDL2pp::Rect getDrawRect();
   SDL2pp::Rect rect;
   VAlign valign;
