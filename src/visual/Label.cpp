@@ -27,7 +27,7 @@ void Label::setText(const char * str) {
   color.r = 255; color.g = 255;
   color.b = 255; color.a = 255;
   clearSurface();
-  surface = TTF_RenderText_Solid(environment.font, text, color);
+  surface = TTF_RenderText_Solid(environment.font.Get(), text, color);
   fontrect.x = 0; fontrect.y = 0;
   fontrect.w = surface->w; fontrect.h = surface->h;
 }
