@@ -6,6 +6,10 @@
 
 extern Environment environment;
 
+Button::Button()
+  : selected(false) {
+}
+
 void Button::draw() {
   SDL_Color sdlcolor;
   sdlcolor.a = 0xFF;
@@ -14,6 +18,10 @@ void Button::draw() {
   sdlcolor.r = 0xFF & (color >> 12);
   environment.renderer.SetDrawColor(sdlcolor.r, sdlcolor.g, sdlcolor.b, sdlcolor.a);
   environment.renderer.FillRect(SDL2pp::Rect(rect));
+  if (selected) {
+    environment.renderer.SetDrawColor(255, 255, 255, 255);
+    environment.renderer.DrawRect(SDL2pp::Rect(rect));
+  }
 }
 
 bool Button::checkClick(const Point<int> &mousePosition) {
