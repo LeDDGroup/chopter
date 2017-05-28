@@ -1,3 +1,4 @@
+#include "../../visual/Button.hpp"
 #include "../Environment.hpp"
 #include "../color.hpp"
 #include "GameController.hpp"
@@ -9,39 +10,44 @@ extern Environment environment;
 #define C_CEIL C_RED
 #define C_FLOOR C_GREEN
 
-static SDL_Rect rect;
 static int xoffset;
 const int size = 32;
 const int height = 15;
 
 void GameController::clearScreen() {
-  rect.x = 0; rect.y = 0;
-  rect.w = 640; rect.h = 480;
-  SDL_FillRect(environment.surface, &rect, C_SCREEN);
+  Button sprite;
+  sprite.color = C_SCREEN;
+  sprite.rect.x = 0; sprite.rect.y = 0;
+  sprite.rect.w = 640; sprite.rect.h = 480;
+  sprite.draw();
 }
 
 void GameController::drawChopter(const Chopter & chopter) {
-  rect.x = chopter.getX() - xoffset; rect.y = chopter.getY();
-  rect.w = chopter.getWidth(); rect.h = chopter.getHeight();
-  SDL_FillRect(environment.surface, &rect, C_PLAYER);
+  Button sprite;
+  sprite.rect.x = chopter.getX() - xoffset; sprite.rect.y = chopter.getY();
+  sprite.rect.w = chopter.getWidth(); sprite.rect.h = chopter.getHeight();
+  sprite.draw();
 }
 
 void GameController::drawColumn(int x, const Hole &hole) {
-  rect.x = x;
+  Button sprite;
+  sprite.rect.w = sprite.rect.h = size;
+  sprite.rect.x = x;
   const int y1 = hole.height;
   const int y2 = y1 + hole.size;
   for (int j = 0; j <= y1; j++) {
-    rect.y = j*size;
-    SDL_FillRect(environment.surface, &rect, C_CEIL);
+    sprite.rect.y = j*size;
+    sprite.color = C_CEIL;
+    sprite.draw();
   }
   for (int j = y2+1; j < height; j++) {
-    rect.y = j*size;
-    SDL_FillRect(environment.surface, &rect, C_FLOOR);
+    sprite.rect.y = j*size;
+    sprite.color = C_FLOOR;
+    sprite.draw();
   }
 }
 
 void GameController::drawMap(const Map & map) {
-  rect.w = size; rect.h = size;
   const int length = map.getLength();
   const Hole * field = map.getField();
   for (int i = 0; i < length; i++) {
@@ -58,5 +64,5 @@ void GameController::draw() {
   clearScreen();
   drawMap(map);
   drawChopter(chopter);
-  SDL_UpdateWindowSurface(environment.window.Get());
+  environment.renderer.Present();
 }
