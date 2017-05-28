@@ -7,7 +7,12 @@
 extern Environment environment;
 
 void Button::draw() {
-  environment.renderer.SetDrawColor(0, 0, 255, 255);
+  SDL_Color sdlcolor;
+  sdlcolor.a = 0xFF;
+  sdlcolor.b = 0xFF & (color);
+  sdlcolor.g = 0xFF & (color >> 8);
+  sdlcolor.r = 0xFF & (color >> 12);
+  environment.renderer.SetDrawColor(sdlcolor.r, sdlcolor.g, sdlcolor.b, sdlcolor.a);
   environment.renderer.FillRect(SDL2pp::Rect(rect));
 }
 
