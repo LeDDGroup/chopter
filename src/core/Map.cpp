@@ -12,11 +12,12 @@ Map::Map(int height, int length, int updateDistance) {
 }
 
 void Map::generateMap() {
-  field[0].size = maxSize;
-  field[0].height = height/3;
-  for(int i = 1; i < length; i++) {
-    field[i].size = normalizeValue(randomValue(field[i-1].size), minSize, maxSize);
-    field[i].height = normalizeValue(randomValue(field[i-1].height), 0, height - field[i].size - 2);
+  const int startValue = length + updateDistance - 1;
+  field[startValue].size = maxSize;
+  field[startValue].height = height / 3;
+  prev = startValue;
+  for(int i = 0; i < length; i++) {
+    updateBlocks(i);
   }
 }
 

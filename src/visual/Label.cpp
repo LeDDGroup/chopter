@@ -23,5 +23,8 @@ void Label::setText(const char * str) {
 }
 
 void Label::draw() {
-  environment.renderer.Copy(texture, NullOpt, Rect(rect));
+  SDL2pp::Point diff = texture.GetSize() - SDL2pp::Point(rect.w, rect.h);
+  Rect pos = Rect(SDL2pp::Point(rect.x, rect.y) - diff / 2,
+                  texture.GetSize());
+  environment.renderer.Copy(texture, NullOpt, pos);
 }
