@@ -1,6 +1,3 @@
-#include <cstdio>
-#include <SDL2/SDL.h>
-#include <SDL2/SDL_ttf.h>
 #include "Logic.hpp"
 #include "Controller.hpp"
 #include "controllers/MainController.hpp"
@@ -15,35 +12,15 @@ bool Logic::hasError;
 
 void Logic::init() {
   hasError = false;
-  if (SDL_Init(SDL_INIT_VIDEO) == -1) {
-    throwError();
-    return;
-  }
-  if (TTF_Init() == -1) {
-    throwError();
-    return;
-  }
   window = SDL_CreateWindow("Chopter",
                             SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
                             640, 480,
                             SDL_WINDOW_SHOWN);
-  if (window == 0) {
-    throwError();
-    return;
-  }
   screenSurface = SDL_GetWindowSurface(window);
   state = MainMenu;
-  environment.font = TTF_OpenFont("resource/Cantarell-Regular.otf", 28 );
-  if (environment.font == 0) {
-    throwError();
-    return;
-  }
 }
 
 void Logic::quit() {
-  TTF_CloseFont(environment.font);
-  TTF_Quit();
-  SDL_Quit();
 }
 
 void Logic::manage(Controller &controller) {
