@@ -15,10 +15,12 @@ class MainController: public Controller, private Event {
   TextButton btnPlay;
   TextButton btnQuit;
   TextButton btnResetHighScore;
+  Button screen;
   Label labelScore;
   void draw();
   bool processEvent(const SDL_Event & event);
   char highScoreText[100];
+  void setHighScore();
 public:
   MainController(Logic * logic);
   void loop();
