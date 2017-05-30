@@ -4,5 +4,6 @@
 // the configured options and settings for Tutorial
 #define CHOPTER_VERSION_MAJOR @CHOPTER_VERSION_MAJOR@
 #define CHOPTER_VERSION_MINOR @CHOPTER_VERSION_MINOR@
+#define CHOPTER_VERSION_MICRO @CHOPTER_VERSION_MINOR@
 
 #endif
