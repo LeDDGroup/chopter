@@ -1,12 +1,14 @@
 #ifndef GAMECONTROLLER_HPP
 #define GAMECONTROLLER_HPP
 
+#include "../../visual/Sprite.hpp"
 #include "../../core/Game.hpp"
 #include "../Controller.hpp"
 #include "../Event.hpp"
 #include "../Logic.hpp"
 
 class GameController: public Controller, private Event {
+  Sprite chopter;
   char scoreText[100];
   Game game;
   bool hasPressedKey;
