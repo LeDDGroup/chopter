@@ -26,6 +26,7 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 # Do not display console on window
 if(WINDOWS)
   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -mwindows")
+  link_libraries(SDL2main)
 endif()
 
 # SDL2 and SDL2pp dependencies

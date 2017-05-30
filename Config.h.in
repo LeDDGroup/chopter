@@ -6,4 +6,10 @@
 #define CHOPTER_VERSION_MINOR @CHOPTER_VERSION_MINOR@
 #define CHOPTER_VERSION_MICRO @CHOPTER_VERSION_MINOR@
 
+#cmakedefine WINDOWS @WINDOWS@
+
+#ifdef WINDOWS
+#define main WinMain
+#endif
+
 #endif
