@@ -32,7 +32,7 @@ int Map::normalizeValue (int value, int minValue, int maxValue) {
 }
 
 int Map::randomValue(int value) {
-  int r = (random() % 3) - 1;
+  int r = (rand() % 3) - 1;
   return value + r;
 }
 
