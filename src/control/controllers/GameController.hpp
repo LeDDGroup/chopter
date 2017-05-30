@@ -7,6 +7,7 @@
 #include "../Logic.hpp"
 
 class GameController: public Controller, private Event {
+  char scoreText[100];
   Game game;
   bool hasPressedKey;
   bool started;
@@ -16,10 +17,12 @@ class GameController: public Controller, private Event {
   void drawColumn(int x, const Hole &hole);
   void drawMap(const Map & map);
   bool processEvent(const SDL_Event & event);
+  void drawScore();
 public:
   GameController(Logic * logic);
   void draw();
   void loop();
+  int getScore() const { return game.getScore(); };
 };
 
 

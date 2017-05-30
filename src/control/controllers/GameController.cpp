@@ -43,5 +43,3 @@ bool GameController::checkForButtonDown() const {
   const Uint8* currentKeyStates = SDL_GetKeyboardState(NULL);
   return currentKeyStates[SDL_SCANCODE_UP] || hasPressedKey;
 }
-
-

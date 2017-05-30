@@ -1,6 +1,8 @@
+#include "Config.h"
 #include "Environment.hpp"
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_ttf.h>
+#include <cstdio>
 
 const char * Environment::default_window_title = "Chopter";
 const int Environment::default_window_position_x = SDL_WINDOWPOS_UNDEFINED;
@@ -18,6 +20,9 @@ Environment::Environment()
            default_window_size_x, default_window_size_y,
            default_window_state),
     renderer(window, -1, SDL_RENDERER_ACCELERATED) {
+  char title[30];
+  sprintf(title, "Chopter v%s", CHOPTER_VERSION);
+  window.SetTitle(title);
 }
 
 Environment::~Environment() {

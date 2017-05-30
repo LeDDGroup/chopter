@@ -1,5 +1,6 @@
 #include "control/Logic.hpp"
 #include "control/Environment.hpp"
+#include "Config.h"
 
 Environment environment;
 
