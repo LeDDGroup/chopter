@@ -13,12 +13,15 @@ configure_file(
 
 include_directories("${PROJECT_BINARY_DIR}")
 
+# Use standart c++11
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 
+# SDL2 and SDL2pp dependencies
 include(FindSDL2PP.cmake)
 include_directories(${SDL2PP_INCLUDE_DIRS})
 link_libraries(SDL2pp SDL2 SDL2_ttf)
 
+# Add build target
 add_executable(chopter
   src/control/Controller.cpp
   src/control/Environment.cpp
