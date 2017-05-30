@@ -5,3 +5,4 @@ cmake_install.cmake
 hello
 chopter
 score.txt
+Config.h
