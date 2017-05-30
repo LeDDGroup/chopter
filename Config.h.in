@@ -1,0 +1,8 @@
+#ifndef CONFIG_H
+#define CONFIG_H
+
+// the configured options and settings for Tutorial
+#define CHOPTER_VERSION_MAJOR @CHOPTER_VERSION_MAJOR@
+#define CHOPTER_VERSION_MINOR @CHOPTER_VERSION_MINOR@
+
+#endif

@@ -1,4 +1,16 @@
 project(chopter)
+cmake_minimum_required(VERSION 2.8)
+
+# The version number.
+set(CHOPTER_VERSION_MAJOR 0)
+set(CHOPTER_VERSION_MINOR 3)
+
+configure_file(
+  "${PROJECT_SOURCE_DIR}/Config.h.in"
+  "${PROJECT_BINARY_DIR}/Config.h"
+  )
+
+include_directories("${PROJECT_BINARY_DIR}")
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 
