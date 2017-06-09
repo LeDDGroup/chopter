@@ -3,14 +3,15 @@
 
 #include "Button.hpp"
 #include "Text.hpp"
+#include <string>
 
 class TextButton: public Button {
   Text textComponent;
 public:
-  TextButton(const char * text = "TextButton",
+  TextButton(const std::string &text = "TextButton",
              const SDL2pp::Rect &rect = SDL2pp::Rect(),
              const Uint32 bgColor = 0);
-  void setText(const char * text) { textComponent = Text(text); };
+  void setText(const std::string &text) { textComponent = Text(text); };
   void draw();
 };
 

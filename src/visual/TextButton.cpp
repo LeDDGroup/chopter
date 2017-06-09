@@ -1,7 +1,7 @@
 #include "TextButton.hpp"
 #include "utils.hpp"
 
-TextButton::TextButton(const char * text,
+TextButton::TextButton(const std::string & text,
                        const SDL2pp::Rect &rect,
                        const Uint32 bgColor)
   : textComponent(text),
