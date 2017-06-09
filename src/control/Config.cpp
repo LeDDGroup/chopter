@@ -29,3 +29,23 @@ void Config::save() {
     fout << conf.name << " " << conf.value << endl;
   }
 }
+
+void Config::setValue(const string &option, const string &value) {
+  for (NameValue &conf: configuration) {
+    if (conf.name == option) {
+      conf.value = value;
+      return;
+    }
+  }
+  NameValue conf = { option, value };
+  configuration.push_back(conf);
+}
+
+string Config::getValue(const string &option) const {
+  for (const NameValue &conf: configuration) {
+    if (conf.name == option) {
+      return conf.value;
+    }
+  }
+  return "NO_VALUE";
+}
