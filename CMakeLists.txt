@@ -37,6 +37,7 @@ link_libraries(SDL2pp SDL2 SDL2_ttf)
 
 # Add build target
 add_executable(chopter
+  src/control/Config.cpp
   src/control/Controller.cpp
   src/control/Environment.cpp
   src/control/Event.cpp
