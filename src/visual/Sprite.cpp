@@ -4,10 +4,22 @@
 
 extern Environment environment;
 
-Sprite::Sprite(const char * path)
-  : texture(environment.renderer, path) {
+Sprite::Sprite(const char * path, int amount, float speed)
+  : texture(environment.renderer, path), amount(amount), speed(speed) {
+  x = 0;
+  y = 0;
+  drawRect.w = texture.GetWidth();
+  drawRect.h = texture.GetHeight() / amount;
+}
+
+void Sprite::update() {
+  y += speed;
+  while (y >= amount) {
+    y -= amount;
+  }
 }
 
 void Sprite::draw(const SDL2pp::Rect &rect) {
-  environment.renderer.Copy(texture, SDL2pp::NullOpt, rect);
+  drawRect.x = x; drawRect.y = (int) y * drawRect.h;
+  environment.renderer.Copy(texture, drawRect, rect);
 }
