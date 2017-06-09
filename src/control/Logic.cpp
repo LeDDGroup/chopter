@@ -6,8 +6,15 @@
 #include "controllers/GameController.hpp"
 #include "controllers/MainController.hpp"
 #include "score.hpp"
+#include <string>
+#include <iostream>
+using namespace std;
 
 extern Environment environment;
+
+Logic::Logic()
+  : config("config.txt") {
+}
 
 void Logic::init() {
   state = MainMenu;
