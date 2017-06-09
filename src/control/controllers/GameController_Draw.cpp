@@ -24,11 +24,9 @@ void GameController::clearScreen() {
 }
 
 void GameController::drawChopter(const Chopter & chopter) {
-  Button sprite;
-  sprite.setColor(C_PLAYER);
-  sprite = SDL2pp::Rect(chopter.getX() - xoffset, chopter.getY(),
-                        chopter.getWidth(), chopter.getHeight());
-  sprite.draw();
+  this->chopter.draw(SDL2pp::Rect(chopter.getX() - xoffset, chopter.getY(),
+                                  chopter.getWidth(), chopter.getHeight()));
+  this->chopter.update();
 }
 
 void GameController::drawColumn(int x, const Hole &hole) {

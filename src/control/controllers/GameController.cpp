@@ -4,7 +4,10 @@
 extern Environment environment;
 
 GameController::GameController(Logic * logic)
-  : Controller(logic), hasPressedKey(false), started(false) {};
+  : Controller(logic),
+    hasPressedKey(false),
+    started(false),
+    chopter("resource/chopter.png", 4, 0.5) {};
 
 void GameController::loop() {
   draw();
